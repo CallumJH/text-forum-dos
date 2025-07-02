@@ -1,16 +1,12 @@
 ﻿namespace Whispers.Chat.SharedKernel;
 
 /// <summary>
-/// Base class for all entities that use GUID-based IDs
+/// Interface for entities that need audit information
 /// </summary>
-/// <remarks>
-/// This new BaseEntity was created to change the use of int IDs on entities
-/// </remarks>
-public abstract class BaseEntity()
+public interface IAuditableEntity
 {
-  public string Id { get; protected set; } = Guid.NewGuid().ToString();
-  public DateTime DateCreated { get; } = DateTime.Now;
-  public DateTime? DateUpdated { get; protected set; }
-  public DateTime CreatedBy { get; protected set; }
-  public DateTime? UpdatedBy { get; protected set; }
-} 
+  DateTime DateCreated { get; }
+  DateTime? DateUpdated { get; }
+  Guid CreatedBy { get; }
+  Guid? UpdatedBy { get; }
+}
