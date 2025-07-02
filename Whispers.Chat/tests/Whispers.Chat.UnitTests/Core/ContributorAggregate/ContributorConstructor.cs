@@ -1,4 +1,6 @@
-﻿namespace Whispers.Chat.UnitTests.Core.ContributorAggregate;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
+
+namespace Whispers.Chat.UnitTests.Core.ContributorAggregate;
 
 public class ContributorConstructor
 {

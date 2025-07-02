@@ -1,4 +1,4 @@
-﻿namespace Whispers.Chat.Core.ContributorAggregate;
+﻿namespace Whispers.Chat.Core.Generated.ContributorAggregate;
 
 public class Contributor(string name) : EntityBase, IAggregateRoot
 {
@@ -25,6 +25,6 @@ public class PhoneNumber(string countryCode,
   {
     yield return CountryCode;
     yield return Number;
-    yield return Extension ?? String.Empty;
+    yield return Extension ?? string.Empty;
   }
 }

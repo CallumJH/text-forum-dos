@@ -1,4 +1,6 @@
-﻿namespace Whispers.Chat.UnitTests.UseCases.Contributors;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
+
+namespace Whispers.Chat.UnitTests.UseCases.Contributors;
 
 public class CreateContributorHandlerHandle
 {

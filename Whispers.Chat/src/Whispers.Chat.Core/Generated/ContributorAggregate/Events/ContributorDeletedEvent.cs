@@ -1,4 +1,4 @@
-﻿namespace Whispers.Chat.Core.ContributorAggregate.Events;
+﻿namespace Whispers.Chat.Core.Generated.ContributorAggregate.Events;
 
 /// <summary>
 /// A domain event that is dispatched whenever a contributor is deleted.

@@ -26,7 +26,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Whispers.Chat.AspireHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61f02d7c9b4a6c9ca38d882dcd41ae2268f73239")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23f5e885bf1d381100cb347a0a59df6db7ea3224")]
 [assembly: System.Reflection.AssemblyProductAttribute("Whispers.Chat.AspireHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Whispers.Chat.AspireHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

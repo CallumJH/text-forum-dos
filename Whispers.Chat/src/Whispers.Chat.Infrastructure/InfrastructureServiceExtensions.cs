@@ -1,5 +1,5 @@
-﻿using Whispers.Chat.Core.Interfaces;
-using Whispers.Chat.Core.Services;
+﻿using Whispers.Chat.Core.Generated.Interfaces;
+using Whispers.Chat.Core.Generated.Services;
 using Whispers.Chat.Infrastructure.Data;
 using Whispers.Chat.Infrastructure.Data.Queries;
 using Whispers.Chat.UseCases.Contributors.List;

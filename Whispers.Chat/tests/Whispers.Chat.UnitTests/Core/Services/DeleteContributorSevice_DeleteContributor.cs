@@ -1,4 +1,5 @@
-﻿using Whispers.Chat.Core.Services;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
+using Whispers.Chat.Core.Generated.Services;
 
 namespace Whispers.Chat.UnitTests.Core.Services;
 

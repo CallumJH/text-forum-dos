@@ -1,4 +1,4 @@
-﻿namespace Whispers.Chat.Core.ContributorAggregate;
+﻿namespace Whispers.Chat.Core.Generated.ContributorAggregate;
 
 public class ContributorStatus : SmartEnum<ContributorStatus>
 {

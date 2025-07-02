@@ -1,7 +1,7 @@
-﻿using Whispers.Chat.Core.ContributorAggregate.Events;
-using Whispers.Chat.Core.Interfaces;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate.Events;
+using Whispers.Chat.Core.Generated.Interfaces;
 
-namespace Whispers.Chat.Core.ContributorAggregate.Handlers;
+namespace Whispers.Chat.Core.Generated.ContributorAggregate.Handlers;
 
 /// <summary>
 /// NOTE: Internal because ContributorDeleted is also marked as internal.

@@ -1,4 +1,4 @@
-﻿using Whispers.Chat.Core.ContributorAggregate;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
 using Whispers.Chat.Infrastructure.Data;
 
 namespace Whispers.Chat.IntegrationTests.Data;

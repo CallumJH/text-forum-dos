@@ -1,4 +1,4 @@
-﻿using Whispers.Chat.Core.ContributorAggregate;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
 
 namespace Whispers.Chat.UseCases.Contributors.Update;
 

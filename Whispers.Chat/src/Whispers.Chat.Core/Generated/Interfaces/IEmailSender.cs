@@ -1,4 +1,4 @@
-﻿namespace Whispers.Chat.Core.Interfaces;
+﻿namespace Whispers.Chat.Core.Generated.Interfaces;
 
 public interface IEmailSender
 {

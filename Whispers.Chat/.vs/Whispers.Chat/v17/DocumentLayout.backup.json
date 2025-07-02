@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|c:\\users\\callu\\documents\\codetest\\text-forum-dos\\whispers.chat\\src\\whispers.chat.core\\boundedcontexts\\sitemoderation\\aggregateroots\\moderator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|solutionrelative:src\\whispers.chat.core\\boundedcontexts\\sitemoderation\\aggregateroots\\moderator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|c:\\users\\callu\\documents\\codetest\\text-forum-dos\\whispers.chat\\src\\whispers.chat.core\\boundedcontexts\\posts\\aggregateroots\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|solutionrelative:src\\whispers.chat.core\\boundedcontexts\\posts\\aggregateroots\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|c:\\users\\callu\\documents\\codetest\\text-forum-dos\\whispers.chat\\src\\whispers.chat.core\\boundedcontexts\\identityandusers\\aggregateroots\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|solutionrelative:src\\whispers.chat.core\\boundedcontexts\\identityandusers\\aggregateroots\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|c:\\users\\callu\\documents\\codetest\\text-forum-dos\\whispers.chat\\src\\whispers.chat.core\\generated\\contributoraggregate\\contributor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|solutionrelative:src\\whispers.chat.core\\generated\\contributoraggregate\\contributor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|c:\\users\\callu\\documents\\codetest\\text-forum-dos\\whispers.chat\\src\\whispers.chat.core\\generated\\contributoraggregate\\contributorstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4548EB20-1D1B-477B-AF6E-DD55653A6583}|src\\Whispers.Chat.Core\\Whispers.Chat.Core.csproj|solutionrelative:src\\whispers.chat.core\\generated\\contributoraggregate\\contributorstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +47,75 @@
             {
               "$type": "Bookmark",
               "Name": "ST:4:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Moderator.cs",
+              "DocumentMoniker": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\BoundedContexts\\SiteModeration\\AggregateRoots\\Moderator.cs",
+              "RelativeDocumentMoniker": "src\\Whispers.Chat.Core\\BoundedContexts\\SiteModeration\\AggregateRoots\\Moderator.cs",
+              "ToolTip": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\BoundedContexts\\SiteModeration\\AggregateRoots\\Moderator.cs",
+              "RelativeToolTip": "src\\Whispers.Chat.Core\\BoundedContexts\\SiteModeration\\AggregateRoots\\Moderator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T20:19:02.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Post.cs",
+              "DocumentMoniker": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\BoundedContexts\\Posts\\AggregateRoots\\Post.cs",
+              "RelativeDocumentMoniker": "src\\Whispers.Chat.Core\\BoundedContexts\\Posts\\AggregateRoots\\Post.cs",
+              "ToolTip": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\BoundedContexts\\Posts\\AggregateRoots\\Post.cs",
+              "RelativeToolTip": "src\\Whispers.Chat.Core\\BoundedContexts\\Posts\\AggregateRoots\\Post.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T20:18:09.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\BoundedContexts\\IdentityAndUsers\\AggregateRoots\\User.cs",
+              "RelativeDocumentMoniker": "src\\Whispers.Chat.Core\\BoundedContexts\\IdentityAndUsers\\AggregateRoots\\User.cs",
+              "ToolTip": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\BoundedContexts\\IdentityAndUsers\\AggregateRoots\\User.cs",
+              "RelativeToolTip": "src\\Whispers.Chat.Core\\BoundedContexts\\IdentityAndUsers\\AggregateRoots\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T20:16:34.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Contributor.cs",
+              "DocumentMoniker": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\Generated\\ContributorAggregate\\Contributor.cs",
+              "RelativeDocumentMoniker": "src\\Whispers.Chat.Core\\Generated\\ContributorAggregate\\Contributor.cs",
+              "ToolTip": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\Generated\\ContributorAggregate\\Contributor.cs",
+              "RelativeToolTip": "src\\Whispers.Chat.Core\\Generated\\ContributorAggregate\\Contributor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T20:16:13.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ContributorStatus.cs",
+              "DocumentMoniker": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\Generated\\ContributorAggregate\\ContributorStatus.cs",
+              "RelativeDocumentMoniker": "src\\Whispers.Chat.Core\\Generated\\ContributorAggregate\\ContributorStatus.cs",
+              "ToolTip": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core\\Generated\\ContributorAggregate\\ContributorStatus.cs",
+              "RelativeToolTip": "src\\Whispers.Chat.Core\\Generated\\ContributorAggregate\\ContributorStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-02T20:16:09.025Z",
+              "EditorCaption": ""
             }
           ]
         }

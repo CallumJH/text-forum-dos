@@ -1,8 +1,8 @@
 ﻿using Ardalis.SharedKernel;
-using Whispers.Chat.Core.ContributorAggregate;
 using Whispers.Chat.UseCases.Contributors.Create;
 using MediatR;
 using System.Reflection;
+using Whispers.Chat.Core.Generated.ContributorAggregate;
 
 namespace Whispers.Chat.Web.Configurations;
 

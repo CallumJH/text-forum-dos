@@ -1,4 +1,6 @@
-﻿namespace Whispers.Chat.Core.ContributorAggregate.Specifications;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
+
+namespace Whispers.Chat.Core.Generated.ContributorAggregate.Specifications;
 
 public class ContributorByIdSpec : Specification<Contributor>
 {

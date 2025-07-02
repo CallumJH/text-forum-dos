@@ -11,4 +11,13 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BoundedContexts\IdentityAndUsers\Entities\" />
+    <Folder Include="BoundedContexts\IdentityAndUsers\Events\" />
+    <Folder Include="BoundedContexts\Posts\Entities\" />
+    <Folder Include="BoundedContexts\Posts\Events\" />
+    <Folder Include="BoundedContexts\SiteModeration\Entities\" />
+    <Folder Include="BoundedContexts\SiteModeration\Events\" />
+  </ItemGroup>
+
 </Project>

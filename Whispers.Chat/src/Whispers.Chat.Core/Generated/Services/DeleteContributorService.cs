@@ -1,9 +1,8 @@
-﻿using Whispers.Chat.Core.ContributorAggregate;
-using Whispers.Chat.Core.ContributorAggregate.Events;
-using Whispers.Chat.Core.Interfaces;
+﻿using Whispers.Chat.Core.ContributorAggregate.Events;
+using Whispers.Chat.Core.Generated.ContributorAggregate;
+using Whispers.Chat.Core.Generated.Interfaces;
 
-
-namespace Whispers.Chat.Core.Services;
+namespace Whispers.Chat.Core.Generated.Services;
 
 /// <summary>
 /// This is here mainly so there's an example of a domain service
@@ -19,7 +18,7 @@ public class DeleteContributorService(IRepository<Contributor> _repository,
   public async Task<Result> DeleteContributor(int contributorId)
   {
     _logger.LogInformation("Deleting Contributor {contributorId}", contributorId);
-    Contributor? aggregateToDelete = await _repository.GetByIdAsync(contributorId);
+    var aggregateToDelete = await _repository.GetByIdAsync(contributorId);
     if (aggregateToDelete == null) return Result.NotFound();
 
     await _repository.DeleteAsync(aggregateToDelete);

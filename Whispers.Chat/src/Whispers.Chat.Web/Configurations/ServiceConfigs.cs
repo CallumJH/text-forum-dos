@@ -1,4 +1,4 @@
-﻿using Whispers.Chat.Core.Interfaces;
+﻿using Whispers.Chat.Core.Generated.Interfaces;
 using Whispers.Chat.Infrastructure;
 using Whispers.Chat.Infrastructure.Email;
 
