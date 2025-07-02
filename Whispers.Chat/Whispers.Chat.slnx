@@ -1,0 +1,30 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="CleanArchitecture.nuspec" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Whispers.Chat.AspireHost/Whispers.Chat.AspireHost.csproj" />
+    <Project Path="src/Whispers.Chat.Core/Whispers.Chat.Core.csproj" />
+    <Project Path="src/Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj" />
+    <Project Path="src/Whispers.Chat.ServiceDefaults/Whispers.Chat.ServiceDefaults.csproj" />
+    <Project Path="src/Whispers.Chat.UseCases/Whispers.Chat.UseCases.csproj" />
+    <Project Path="src/Whispers.Chat.Web/Whispers.Chat.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Whispers.Chat.FunctionalTests/Whispers.Chat.FunctionalTests.csproj">
+      <BuildDependency Project="src/Whispers.Chat.Web/Whispers.Chat.Web.csproj" />
+    </Project>
+    <Project Path="tests/Whispers.Chat.IntegrationTests/Whispers.Chat.IntegrationTests.csproj">
+      <BuildDependency Project="src/Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj" />
+    </Project>
+    <Project Path="tests/Whispers.Chat.UnitTests/Whispers.Chat.UnitTests.csproj" />
+  </Folder>
+</Solution>

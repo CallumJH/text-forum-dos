@@ -1,0 +1,13 @@
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\bin\Debug\net9.0\Whispers.Chat.Core.deps.json
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\bin\Debug\net9.0\Whispers.Chat.Core.dll
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\bin\Debug\net9.0\Whispers.Chat.Core.pdb
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\Whispers.Chat.Core.csproj.AssemblyReference.cache
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\Whispers.Chat.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\Whispers.Chat.Core.AssemblyInfoInputs.cache
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\Whispers.Chat.Core.AssemblyInfo.cs
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\Whispers.Chat.Core.csproj.CoreCompileInputs.cache
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\Whispers.Chat.Core.sourcelink.json
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\Whispers.Chat.Core.dll
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\refint\Whispers.Chat.Core.dll
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\Whispers.Chat.Core.pdb
+C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Core\obj\Debug\net9.0\ref\Whispers.Chat.Core.dll
