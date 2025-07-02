@@ -35,6 +35,9 @@ bld/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+*.dll
+*.exe
+*.pdb
 
 # Files built by Visual Studio
 *_i.c
