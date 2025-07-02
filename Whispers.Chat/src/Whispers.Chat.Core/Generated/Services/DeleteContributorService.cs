@@ -1,5 +1,5 @@
-﻿using Whispers.Chat.Core.ContributorAggregate.Events;
-using Whispers.Chat.Core.Generated.ContributorAggregate;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
+using Whispers.Chat.Core.Generated.ContributorAggregate.Events;
 using Whispers.Chat.Core.Generated.Interfaces;
 
 namespace Whispers.Chat.Core.Generated.Services;

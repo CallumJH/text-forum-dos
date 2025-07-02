@@ -1,5 +1,5 @@
-﻿using Whispers.Chat.Core.ContributorAggregate.Specifications;
-using Whispers.Chat.Core.Generated.ContributorAggregate;
+﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
+using Whispers.Chat.Core.Generated.ContributorAggregate.Specifications;
 
 namespace Whispers.Chat.UseCases.Contributors.Get;
 
