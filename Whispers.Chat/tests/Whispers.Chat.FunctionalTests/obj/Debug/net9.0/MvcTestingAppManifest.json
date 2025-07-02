@@ -1,7 +1,0 @@
-{
-  "Whispers.Chat.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Core",
-  "Whispers.Chat.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Infrastructure",
-  "Whispers.Chat.ServiceDefaults, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.ServiceDefaults",
-  "Whispers.Chat.UseCases, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.UseCases",
-  "Whispers.Chat.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\callu\\Documents\\Codetest\\text-forum-dos\\Whispers.Chat\\src\\Whispers.Chat.Web"
-}
