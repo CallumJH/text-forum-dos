@@ -20,8 +20,39 @@ I would love to go big picture with it but lets get the basics working.
   - [ ] Use xUnit
 - [ ] Think About Frontend ( Depends on how far I get )
   - [ ] Otherwise postman / swagger
-
+- [ ] Neaten checklist
 
 ## Requirement Checklists
 
-- [ ] dotnet project
+- [ ] Backend
+  - [ ] Dotnet project + C#
+  - [ ] Datastore
+    - [ ] Out of the box integration with dotnet
+  - [ ] Authentication must be baked into the backend
+    - [ ] MFA can be added
+    - [ ] SSO can be added
+  - [ ] This needs to service < 100 concurrent users
+  - [ ] An exposable API for automated integrations should be available
+    - [ ] This should at minimum have a postman collection to test with
+
+- [ ] System Key Features
+  - [ ] User Authentication
+  - [ ] User Management
+  - [ ] Creating posts
+  - [ ] Liking posts
+    - [ ] A user can like a post once
+    - [ ] A user cant like their own post
+  - [ ] Users can view posts anonymously
+  - [ ] Commenting on posts
+  - [ ] Retrieve posts
+  - [ ] Add moderators
+    - [ ] Moderators can tag posts as misleading / false information
+  - [ ] Retrieve and page posts 
+    - [ ] For posts comments as well
+  - [ ] Filtering with a date range / author / tags 
+  - [ ] Sorting by date / like count
+- [ ] Restrictions
+  - [ ] Users can't edit or delete their posts for"ethics", but i believe we're selling data :^)
+
+
+- [ ] Instructions TODO
