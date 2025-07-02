@@ -21,6 +21,8 @@ I would love to go big picture with it but lets get the basics working.
 - [ ] Think About Frontend ( Depends on how far I get )
   - [ ] Otherwise postman / swagger
 - [ ] Neaten checklist
+- [ ] Use Aspire
+- [ ] Template out the DDD base with clean architecture ( https://github.com/ardalis/CleanArchitecture )
 
 ## Requirement Checklists
 
