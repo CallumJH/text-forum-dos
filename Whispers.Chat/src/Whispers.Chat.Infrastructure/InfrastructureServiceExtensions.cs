@@ -3,6 +3,9 @@ using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots;
 using Whispers.Chat.Core.Generated.Interfaces;
 using Whispers.Chat.Core.Generated.Services;
 using Whispers.Chat.Infrastructure.Data;
+using Whispers.Chat.Infrastructure.Data.Identity;
+using Whispers.Chat.Infrastructure.Data.Moderation;
+using Whispers.Chat.Infrastructure.Data.Posts;
 using Whispers.Chat.Infrastructure.Data.Queries;
 using Whispers.Chat.UseCases.Contributors.List;
 
@@ -14,8 +17,15 @@ public static class InfrastructureServiceExtensions
   {
     var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-    services.AddDbContext<AppDbContext>(options =>
-     options.UseSqlServer(connectionString));
+    // Register all DbContexts
+    services.AddDbContext<IdentityContext>(options =>
+      options.UseSqlite(connectionString));
+
+    services.AddDbContext<PostsContext>(options =>
+      options.UseSqlite(connectionString));
+
+    services.AddDbContext<ModerationContext>(options =>
+      options.UseSqlite(connectionString));
 
     services.AddIdentity<User, Role>(options =>
     {
@@ -36,7 +46,7 @@ public static class InfrastructureServiceExtensions
       options.User.RequireUniqueEmail = true;
       options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     })
-    .AddEntityFrameworkStores<AppDbContext>()
+    .AddEntityFrameworkStores<IdentityContext>()
     .AddDefaultTokenProviders();
 
     services.ConfigureApplicationCookie(options =>
@@ -49,6 +59,7 @@ public static class InfrastructureServiceExtensions
       options.SlidingExpiration = true;
     });
 
+    // Register repositories for each context
     services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
            .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>))
            .AddScoped<IListContributorsQueryService, ListContributorsQueryService>()

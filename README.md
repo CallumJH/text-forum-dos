@@ -58,3 +58,4 @@ I would love to go big picture with it but lets get the basics working.
 
 
 - [ ] Instructions TODO
+- [ ] Need to design a neat message servicing feature for the users to be notified
