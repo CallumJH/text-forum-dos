@@ -100,8 +100,8 @@ The solution follows a Clean Architecture approach with the following layers:
    dotnet run --project src/Whispers.Chat.Web/Whispers.Chat.Web.csproj
    ```
    The application will start and be available at:
-   - API: https://localhost:5001
-   - Swagger Documentation: https://localhost:5001/swagger
+   - API: https://localhost:57679
+   - Swagger Documentation: https://localhost:57679
 
 - Side note, this might be better to run by opening the solution in Visual Studio
 
