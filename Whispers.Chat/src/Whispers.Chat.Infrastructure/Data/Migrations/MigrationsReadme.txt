@@ -1,5 +1,5 @@
 First Run
-CD C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Web
+CD Whispers.Chat\src\Whispers.Chat.Web
 
 Then you can
 

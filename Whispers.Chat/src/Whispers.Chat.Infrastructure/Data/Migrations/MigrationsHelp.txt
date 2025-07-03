@@ -1,3 +1,0 @@
-Creating new migration ( Run from the web project )
-
-dotnet ef migrations add {MIGRATIONNAME} -c AppDbContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj -o Data/Migrations

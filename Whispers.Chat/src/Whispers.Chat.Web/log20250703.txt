@@ -1051,3 +1051,18 @@ INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
 VALUES ('20250703113921_AddModerator', '9.0.6');
 2025-07-03 16:52:17.900 +02:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 DELETE FROM "__EFMigrationsLock";
+2025-07-03 17:03:40.120 +02:00 [INF] Registered 5 endpoints in 506 milliseconds.
+2025-07-03 17:03:41.121 +02:00 [WRN] The property 'User.LikedPostIds' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-03 17:03:41.125 +02:00 [WRN] The property 'Post.Tags' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-03 17:03:41.125 +02:00 [WRN] The property 'Post._likedByUserIds' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-03 17:03:41.125 +02:00 [WRN] The property 'Moderator._moderatedPostIds' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-03 17:03:41.263 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2025-07-03 17:03:41.268 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2025-07-03 17:03:41.318 +02:00 [INF] User profile is available. Using 'C:\Users\callu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-03 17:03:41.671 +02:00 [INF] Now listening on: https://localhost:54426
+2025-07-03 17:03:41.677 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-07-03 17:03:41.754 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-03 17:03:41.754 +02:00 [INF] Hosting environment: Development
+2025-07-03 17:03:41.754 +02:00 [INF] Content root path: C:\Users\callu\Documents\Codetest\text-forum-dos\Whispers.Chat\src\Whispers.Chat.Web

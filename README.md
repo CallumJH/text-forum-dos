@@ -2,60 +2,140 @@
 An updated approach towards how I would make a neat text forum app
 
 
-# Planning
+# What can you do with the project currently
 
-## Rough Notes
+Unfortunately I did not finish the desired outcome of the project within the time frame.
+I have missed the following.
 
-We're making a simple chat / forum app here. 
-I would love to go big picture with it but lets get the basics working. 
+- Request to Response wiring for testing
+  - Postman collection for these requests
+- Connected auth
+- Unit tests
+- Integration tests
+- Mocking
+- Session management for at most 100 users
+- Features required
+  - Create post
+  - Like post
+  - Comment on post
+  - Flag / Tag posts
+  - Moderation 
+  - Login
+  - Decent documentation for running the project
+##
 
-- [X] Use DDD?
-  - [ ] Use CQRS?
-  - [ ] Use MediatR?
-  - [ ] Use FluentValidation?
-  - [ ] Use AutoMapper? ( Not sure about this one )
-- [ ] Use Serilog?
-- [X] Use TDD?
-  - [ ] Use FluentAssertions?
-  - [X] Use xUnit
-- [ ] Think About Frontend ( Depends on how far I get )
-  - [ ] Otherwise postman / swagger
-- [ ] Neaten checklist
-- [X] Use Aspire
-- [X] Template out the DDD base with clean architecture ( https://github.com/ardalis/CleanArchitecture )
+# The current project
 
-## Requirement Checklists
+This project is built using Clean Architecture principles with Domain-Driven Design (DDD) patterns in .NET. 
+The solution is structured into several key projects that separate concerns and maintain a clear dependency flow.
 
-- [X] Backend
-  - [X] Dotnet project + C#
-  - [ ] Datastore
-    - [ ] Out of the box integration with dotnet
-  - [ ] Authentication must be baked into the backend
-    - [ ] MFA can be added
-    - [ ] SSO can be added
-  - [ ] This needs to service < 100 concurrent users
-  - [ ] An exposable API for automated integrations should be available
-    - [ ] This should at minimum have a postman collection to test with
+## Architecture Overview
 
-- [ ] System Key Features
-  - [ ] User Authentication
-  - [ ] User Management
-  - [ ] Creating posts
-  - [ ] Liking posts
-    - [ ] A user can like a post once
-    - [ ] A user cant like their own post
-  - [ ] Users can view posts anonymously
-  - [ ] Commenting on posts
-  - [ ] Retrieve posts
-  - [ ] Add moderators
-    - [ ] Moderators can tag posts as misleading / false information
-  - [ ] Retrieve and page posts 
-    - [ ] For posts comments as well
-  - [ ] Filtering with a date range / author / tags 
-  - [ ] Sorting by date / like count
-- [ ] Restrictions
-  - [ ] Users can't edit or delete their posts for"ethics", but i believe we're selling data :^)
+The solution follows a Clean Architecture approach with the following layers:
 
+1. **Core (Domain Model)**
+   - Contains all business entities, aggregates, and domain logic
+   - Defines interfaces for infrastructure concerns
+   - Holds domain specific events and event handlers
+   - Located in `src/Whispers.Chat.Core`
 
-- [ ] Instructions TODO
-- [ ] Need to design a neat message servicing feature for the users to be notified
+2. **Infrastructure**
+   - Implements data access using Entity Framework Core
+   - Contains database migrations and configurations
+   - Located in `src/Whispers.Chat.Infrastructure`
+
+3. **Use Cases (Application Layer)**
+   - Implements application-specific business rules
+   - Organizes features using CQRS pattern (Commands/Queries)
+   - Provides a clean API for the web layer
+   - Located in `src/Whispers.Chat.UseCases`
+
+4. **Web API**
+   - Handles HTTP requests and responses
+   - Implements API endpoints using FastEndpoints
+   - Configures middleware and services
+   - Located in `src/Whispers.Chat.Web`
+
+## Technical Stack
+
+- **Framework**: .NET 9.0
+- **API Design**: FastEndpoints for clean, performant endpoints
+- **Data Access**: Entity Framework Core with SQLite
+- **Authentication**: ASP.NET Core Identity (planned)
+- **Logging**: Serilog with file and console sinks
+- **Documentation**: Swagger/OpenAPI
+- **Monitoring**: OpenTelemetry integration
+- **Service Discovery**: Built-in .NET service discovery
+
+## Getting Started
+
+### Prerequisites
+
+- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+- A code editor (recommended: Visual Studio 2022 or VS Code)
+- SQLite (included in the project, no separate installation needed)
+
+### Setup Instructions
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/text-forum-dos.git
+   cd text-forum-dos
+   ```
+
+2. **Restore Dependencies**
+   ```bash
+   dotnet restore Whispers.Chat.slnx
+   ```
+
+3. **Set Up the Database**
+   The project uses SQLite with Entity Framework Core. The database will be automatically created on first run, but you can manually initialize it with:
+   ```bash
+   cd CD Whispers.Chat/src/Whispers.Chat.Web
+   dotnet ef database update -c AppDbContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj
+   ```
+
+4. **Run the Application**
+   ```bash
+   dotnet run --project src/Whispers.Chat.Web/Whispers.Chat.Web.csproj
+   ```
+   The application will start and be available at:
+   - API: https://localhost:5001
+   - Swagger Documentation: https://localhost:5001/swagger
+
+- Side note, this might be better to run by opening the solution in Visual Studio
+
+### Development Workflow
+
+1. **Building the Solution**
+   ```bash
+   dotnet build Whisper.Chat.slnx
+   ```
+
+2. **Database Migrations**
+   When making changes to the data model:
+   ```bash
+   cd src/Whispers.Chat.Web
+   dotnet ef migrations add [MigrationName]
+   dotnet ef database update
+   ```
+
+### Configuration
+
+- The main configuration file is located at `src/Whispers.Chat.Web/appsettings.json`
+- For development, use `appsettings.Development.json`
+- Key settings include:
+  - Database connection string
+  - Logging configuration
+  - Server settings
+
+### Logging
+
+- Logs are written to both console and file
+- Log files are created in the application root with format `log[DATE].txt`
+- Configure log levels in `appsettings.json` under the "Serilog" section
+
+## Final notes
+
+I am continuing to work on this repo until the listed items are done above on a separate branch named V2 if you would
+be interested in tracking its further progress.
