@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Ardalis.GuardClauses;
-using Ardalis.SharedKernel;
+﻿namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 
 namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots;
 

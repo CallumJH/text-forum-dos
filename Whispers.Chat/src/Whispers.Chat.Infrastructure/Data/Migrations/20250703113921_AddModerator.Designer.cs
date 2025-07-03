@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Whispers.Chat.Infrastructure.Data;
 
@@ -9,10 +10,12 @@ using Whispers.Chat.Infrastructure.Data;
 
 namespace Whispers.Chat.Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(BaseDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AppDbContext))]
+    [Migration("20250703113921_AddModerator")]
+    partial class AddModerator
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
@@ -233,7 +236,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contributor");
+                    b.ToTable("Contributors");
                 });
 
             modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Comment", b =>
@@ -274,7 +277,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
                             b1.HasKey("ContributorId");
 
-                            b1.ToTable("Contributor");
+                            b1.ToTable("Contributors");
 
                             b1.WithOwner()
                                 .HasForeignKey("ContributorId");
