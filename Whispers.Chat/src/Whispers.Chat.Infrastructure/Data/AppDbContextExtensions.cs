@@ -1,4 +1,7 @@
-﻿namespace Whispers.Chat.Infrastructure.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Whispers.Chat.Infrastructure.Data;
 
 public static class AppDbContextExtensions
 {

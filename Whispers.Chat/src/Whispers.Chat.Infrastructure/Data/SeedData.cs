@@ -9,14 +9,13 @@ public static class SeedData
 
   public static async Task InitializeAsync(AppDbContext dbContext)
   {
-    if (await dbContext.Contributors.AnyAsync()) return; // DB has been seeded
-
-    await PopulateTestDataAsync(dbContext);
+    //await PopulateTestDataAsync(dbContext);
+    dbContext.Database.EnsureCreated();
+    await dbContext.SaveChangesAsync(); // TODO: Actually write seeding functionality here
   }
 
   public static async Task PopulateTestDataAsync(AppDbContext dbContext)
   {
-    dbContext.Contributors.AddRange([Contributor1, Contributor2]);
     await dbContext.SaveChangesAsync();
   }
 }

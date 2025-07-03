@@ -1,10 +1,11 @@
-﻿namespace Whispers.Chat.Core.Bounded_Contexts.Identity_and_Users.Aggregates;
+﻿using Microsoft.AspNetCore.Identity;
+using Ardalis.GuardClauses;
+using Ardalis.SharedKernel;
 
-public class User : EntityBase<Guid>, IAggregateRoot, IAuditableEntity
+namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots;
+
+public class User : IdentityUser<Guid>, IAggregateRoot, IAuditableEntity
 {
-  public string Username { get; private set; } = string.Empty;
-  public string Email { get; private set; } = string.Empty;
-  public string PasswordHash { get; private set; } = string.Empty;
   public List<Guid> LikedPostIds { get; private set; } = new();
   public bool IsAnonymous { get; private set; }
 
@@ -13,18 +14,15 @@ public class User : EntityBase<Guid>, IAggregateRoot, IAuditableEntity
   public Guid CreatedBy { get; private init; }
   public Guid? UpdatedBy { get; private set; }
 
-  #region EFCore constructor
   protected User()
   {
     Id = Guid.NewGuid();
   }
-  #endregion
 
-  public User(string username, string email, string passwordHash, Guid createdBy) : this()
+  public User(string username, string email, Guid createdBy) : this()
   {
-    Username = Guard.Against.NullOrEmpty(username, nameof(username));
+    UserName = Guard.Against.NullOrEmpty(username, nameof(username));
     Email = Guard.Against.NullOrEmpty(email, nameof(email));
-    PasswordHash = Guard.Against.NullOrEmpty(passwordHash, nameof(passwordHash));
     CreatedBy = createdBy;
     IsAnonymous = false;
   }
@@ -33,7 +31,7 @@ public class User : EntityBase<Guid>, IAggregateRoot, IAuditableEntity
   {
     return new User
     {
-      Username = $"Anonymous_{Guid.NewGuid()}",
+      UserName = $"Anonymous_{Guid.NewGuid()}",
       IsAnonymous = true,
       CreatedBy = Guid.Empty // System user
     };
@@ -65,7 +63,7 @@ public class User : EntityBase<Guid>, IAggregateRoot, IAuditableEntity
       throw new DomainException("Anonymous users cannot update their profile");
     }
 
-    Username = Guard.Against.NullOrEmpty(username, nameof(username));
+    UserName = Guard.Against.NullOrEmpty(username, nameof(username));
     Email = Guard.Against.NullOrEmpty(email, nameof(email));
     DateUpdated = DateTime.UtcNow;
     UpdatedBy = updatedBy;
