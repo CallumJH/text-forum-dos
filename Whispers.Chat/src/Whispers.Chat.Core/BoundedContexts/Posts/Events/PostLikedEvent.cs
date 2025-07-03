@@ -1,18 +1,13 @@
 ﻿namespace Whispers.Chat.Core.BoundedContexts.Posts.Events;
 
-/// <summary>
-/// Event raised when a post is liked by a user
-/// </summary>
-public class PostLikedEvent : DomainEventBase
+public record PostLikedEvent : BaseDomainEvent
 {
   public Guid PostId { get; }
-  public Guid LikedByUserId { get; }
-  public int NewLikeCount { get; }
+  public Guid UserId { get; }
 
-  public PostLikedEvent(Guid postId, Guid likedByUserId, int newLikeCount)
+  public PostLikedEvent(Guid postId, Guid userId)
   {
     PostId = postId;
-    LikedByUserId = likedByUserId;
-    NewLikeCount = newLikeCount;
+    UserId = userId;
   }
 } 

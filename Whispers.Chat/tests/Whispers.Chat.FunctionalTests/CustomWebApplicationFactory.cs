@@ -24,7 +24,7 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
     using (var scope = serviceProvider.CreateScope())
     {
       var scopedServices = scope.ServiceProvider;
-      var db = scopedServices.GetRequiredService<AppDbContext>();
+      var db = scopedServices.GetRequiredService<BaseDbContext>();
 
       var logger = scopedServices
           .GetRequiredService<ILogger<CustomWebApplicationFactory<TProgram>>>();

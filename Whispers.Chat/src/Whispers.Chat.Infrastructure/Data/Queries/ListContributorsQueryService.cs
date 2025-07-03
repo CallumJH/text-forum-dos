@@ -3,7 +3,7 @@ using Whispers.Chat.UseCases.Contributors.List;
 
 namespace Whispers.Chat.Infrastructure.Data.Queries;
 
-public class ListContributorsQueryService(AppDbContext _db) : IListContributorsQueryService
+public class ListContributorsQueryService(BaseDbContext _db) : IListContributorsQueryService
 {
   // You can use EF, Dapper, SqlClient, etc. for queries -
   // this is just an example
