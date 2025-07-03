@@ -1,7 +1,7 @@
 ﻿using Ardalis.Specification;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots;
+using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 
 namespace Whispers.Chat.Infrastructure.Data.Identity;
 

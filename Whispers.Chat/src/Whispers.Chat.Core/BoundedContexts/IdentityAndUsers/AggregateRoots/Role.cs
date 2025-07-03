@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Identity;
-using Ardalis.SharedKernel;
+﻿using Microsoft.AspNetCore.Identity;
 
-namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots;
+namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 
 public class Role : IdentityRole<Guid>, IAggregateRoot
 {

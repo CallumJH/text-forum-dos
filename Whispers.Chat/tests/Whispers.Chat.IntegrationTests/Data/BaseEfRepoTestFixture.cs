@@ -1,6 +1,5 @@
 ﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
 using Whispers.Chat.Infrastructure.Data;
-using Whispers.Chat.Infrastructure.Data.Identity;
 
 namespace Whispers.Chat.IntegrationTests.Data;
 

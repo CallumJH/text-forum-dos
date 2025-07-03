@@ -1,6 +1,6 @@
-﻿namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
+﻿using Microsoft.AspNetCore.Identity;
 
-namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots;
+namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 
 public class User : IdentityUser<Guid>, IAggregateRoot, IAuditableEntity
 {

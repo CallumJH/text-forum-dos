@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots;
+using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 using Whispers.Chat.Core.Generated.Interfaces;
 using Whispers.Chat.Core.Generated.Services;
 using Whispers.Chat.Infrastructure.Data;

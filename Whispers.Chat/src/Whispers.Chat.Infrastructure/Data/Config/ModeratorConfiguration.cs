@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
-using Whispers.Chat.Core.Bounded_Contexts.Site_Moderation.Aggregates;
 using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
+using Whispers.Chat.Core.BoundedContexts.SiteModeration.Aggregates;
 
 namespace Whispers.Chat.Infrastructure.Persistence.Configurations;
 

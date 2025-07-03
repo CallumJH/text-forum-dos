@@ -1,6 +1,6 @@
-﻿using Whispers.Chat.Core.Bounded_Contexts.Site_Moderation.Aggregates;
-using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
+﻿using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 using Whispers.Chat.Core.BoundedContexts.Posts;
+using Whispers.Chat.Core.BoundedContexts.SiteModeration.Aggregates;
 using Whispers.Chat.Core.Generated.ContributorAggregate;
 
 namespace Whispers.Chat.Infrastructure.Data;
@@ -29,9 +29,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options,
 
     // dispatch events only if save was successful
     var entitiesWithEvents = ChangeTracker.Entries<HasDomainEventsBase>()
-        .Select(e => e.Entity)
+        .Select(e => (EntityBase)e.Entity)
         .Where(e => e.DomainEvents.Any())
-        .ToArray();
+        .ToList();
 
     await _dispatcher.DispatchAndClearEvents(entitiesWithEvents);
 
