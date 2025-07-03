@@ -2,42 +2,176 @@
 @host=https://localhost
 @port=57679
 
-// List all contributors
-GET {{host}}:{{port}}/Contributors
+### Variables for testing
+@test_user_id=00000000-0000-0000-0000-000000000001
+@admin_user_id=00000000-0000-0000-0000-000000000000
 
 ###
-
-// Get a specific contributor
-@id_to_get=1
-GET {{host}}:{{port}}/Contributors/{{id_to_get}}
-
-###
-
-// Add a new contributor
-POST {{host}}:{{port}}/Contributors
+# Create a new user account
+POST {{host}}:{{port}}/Users/register
 Content-Type: application/json
 
 {
-  "name": "John Doe 2",
-  "email": "test@test.com",
-  "phoneNumber": "1234567890"
+  "username": "johndoe123",
+  "email": "john.doe@example.com",
+  "password": "SecurePassword123!",
+  "createdBy": "{{admin_user_id}}"
 }
 
 ###
-
-// Update a contributor
-@id_to_update=1
-PUT {{host}}:{{port}}/Contributors/{{id_to_update}}
+# Create another user for testing
+POST {{host}}:{{port}}/Users/register
 Content-Type: application/json
 
 {
-  "id": {{id_to_update}},
-  "name": "ardalis2"
+  "username": "janedoe456",
+  "email": "jane.doe@example.com",
+  "password": "AnotherPassword456!",
+  "createdBy": "{{admin_user_id}}"
 }
 
 ###
+# User login with username
+POST {{host}}:{{port}}/Users/login
+Content-Type: application/json
 
-// Delete a contributor
-@id_to_delete=1
-DELETE {{host}}:{{port}}/Contributors/{{id_to_delete}}
+{
+  "usernameOrEmail": "johndoe123",
+  "password": "SecurePassword123!"
+}
 
+###
+# User login with email
+POST {{host}}:{{port}}/Users/login
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "john.doe@example.com",
+  "password": "SecurePassword123!"
+}
+
+###
+# Failed login attempt (wrong password)
+POST {{host}}:{{port}}/Users/login
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "johndoe123",
+  "password": "WrongPassword"
+}
+
+###
+# Create anonymous user
+POST {{host}}:{{port}}/Users/anonymous
+Content-Type: application/json
+
+###
+# Get user by ID
+GET {{host}}:{{port}}/Users/{{test_user_id}}
+
+###
+# Get all users (admin endpoint)
+GET {{host}}:{{port}}/Users
+Authorization: Bearer {{auth_token}}
+
+###
+# Update user profile
+PUT {{host}}:{{port}}/Users/{{test_user_id}}/profile
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "username": "johndoe_updated",
+  "email": "john.updated@example.com",
+  "updatedBy": "{{test_user_id}}"
+}
+
+###
+# Update user password
+PUT {{host}}:{{port}}/Users/{{test_user_id}}/password
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "currentPassword": "SecurePassword123!",
+  "newPassword": "NewSecurePassword789!",
+  "updatedBy": "{{test_user_id}}"
+}
+
+###
+# Test duplicate username creation (should fail)
+POST {{host}}:{{port}}/Users/register
+Content-Type: application/json
+
+{
+  "username": "johndoe123",
+  "email": "different@example.com",
+  "password": "AnotherPassword!",
+  "createdBy": "{{admin_user_id}}"
+}
+
+###
+# Test duplicate email creation (should fail)
+POST {{host}}:{{port}}/Users/register
+Content-Type: application/json
+
+{
+  "username": "differentuser",
+  "email": "john.doe@example.com",
+  "password": "AnotherPassword!",
+  "createdBy": "{{admin_user_id}}"
+}
+
+###
+# Get user's liked posts
+GET {{host}}:{{port}}/Users/{{test_user_id}}/liked-posts
+Authorization: Bearer {{auth_token}}
+
+###
+# Like a post
+@post_id=00000000-0000-0000-0000-000000000002
+@post_author_id=00000000-0000-0000-0000-000000000003
+POST {{host}}:{{port}}/Users/{{test_user_id}}/like-post
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "postId": "{{post_id}}",
+  "postAuthorId": "{{post_author_id}}",
+  "updatedBy": "{{test_user_id}}"
+}
+
+###
+# Search users by username
+GET {{host}}:{{port}}/Users/search?username=john
+Authorization: Bearer {{auth_token}}
+
+###
+# Search users by email
+GET {{host}}:{{port}}/Users/search?email=example.com
+Authorization: Bearer {{auth_token}}
+
+###
+# Get anonymous users (admin endpoint)
+GET {{host}}:{{port}}/Users/anonymous
+Authorization: Bearer {{auth_token}}
+
+###
+# Deactivate user account (if implemented)
+PUT {{host}}:{{port}}/Users/{{test_user_id}}/deactivate
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "updatedBy": "{{admin_user_id}}"
+}
+
+###
+# Reactivate user account (if implemented)
+PUT {{host}}:{{port}}/Users/{{test_user_id}}/activate
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "updatedBy": "{{admin_user_id}}"
+}

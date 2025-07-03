@@ -11,9 +11,6 @@ public static class ServiceConfigs
     services.AddInfrastructureServices(builder.Configuration)
             .AddMediatrConfigs();
 
-    //TODO: Logger needs to be registered
-
-
     if (builder.Environment.IsDevelopment())
     {
       // Use a local test email server

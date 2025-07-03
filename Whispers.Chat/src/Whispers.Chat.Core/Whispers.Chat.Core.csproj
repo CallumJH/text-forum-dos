@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="BoundedContexts\IdentityAndUsers\Entities\" />
-    <Folder Include="BoundedContexts\IdentityAndUsers\Events\" />
     <Folder Include="BoundedContexts\Posts\Events\" />
     <Folder Include="BoundedContexts\SiteModeration\Entities\" />
     <Folder Include="BoundedContexts\SiteModeration\Events\" />

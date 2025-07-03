@@ -14,7 +14,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     builder.HasKey(u => u.Id);
 
     // Properties configuration
-    builder.Property(u => u.Username)
+    builder.Property(u => u.UserName)
         .IsRequired()
         .HasMaxLength(256);
 
@@ -52,7 +52,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         .IsRequired(false);
 
     // Indexes
-    builder.HasIndex(u => u.Username)
+    builder.HasIndex(u => u.UserName)
         .IsUnique()
         .HasDatabaseName("IX_Users_Username");
 
@@ -67,7 +67,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         .HasDatabaseName("IX_Users_DateCreated");
 
     // Configure private setters (if needed)
-    builder.Property(u => u.Username).UsePropertyAccessMode(PropertyAccessMode.Field);
+    builder.Property(u => u.UserName).UsePropertyAccessMode(PropertyAccessMode.Field);
     builder.Property(u => u.Email).UsePropertyAccessMode(PropertyAccessMode.Field);
     builder.Property(u => u.PasswordHash).UsePropertyAccessMode(PropertyAccessMode.Field);
     builder.Property(u => u.LikedPostIds).UsePropertyAccessMode(PropertyAccessMode.Field);
