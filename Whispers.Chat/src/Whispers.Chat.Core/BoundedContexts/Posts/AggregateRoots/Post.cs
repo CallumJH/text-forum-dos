@@ -1,8 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Ardalis.SharedKernel;
-using Whispers.Chat.SharedKernel;
-
-namespace Whispers.Chat.Core.BoundedContexts.Posts;
+﻿namespace Whispers.Chat.Core.BoundedContexts.Posts;
 
 public class Post : EntityBase<Guid>, IAggregateRoot, IAuditableEntity
 {

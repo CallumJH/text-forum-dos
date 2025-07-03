@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Whispers.Chat.Infrastructure.Data;
 
@@ -10,9 +11,11 @@ using Whispers.Chat.Infrastructure.Data;
 namespace Whispers.Chat.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250703113417_AddPost")]
+    partial class AddPost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
@@ -125,67 +128,37 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsFalseInformation")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(false);
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsMisleading")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(false);
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("Tags")
+                    b.PrimitiveCollection<string>("Tags")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("_likedByUserIds")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("LikedByUserIds");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId")
-                        .HasDatabaseName("IX_Posts_AuthorId");
-
-                    b.HasIndex("DateCreated")
-                        .HasDatabaseName("IX_Posts_DateCreated");
-
-                    b.HasIndex("IsFalseInformation")
-                        .HasDatabaseName("IX_Posts_IsFalseInformation");
-
-                    b.HasIndex("IsMisleading")
-                        .HasDatabaseName("IX_Posts_IsMisleading");
-
-                    b.HasIndex("Title")
-                        .HasDatabaseName("IX_Posts_Title");
-
-                    b.HasIndex("IsMisleading", "IsFalseInformation")
-                        .HasDatabaseName("IX_Posts_IsMisleading_IsFalseInformation");
-
-                    b.ToTable("Posts", (string)null);
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Whispers.Chat.Core.Bounded_Contexts.Site_Moderation.Aggregates.Moderator", b =>
@@ -239,18 +212,9 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
             modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Comment", b =>
                 {
                     b.HasOne("Whispers.Chat.Core.BoundedContexts.Posts.Post", null)
-                        .WithMany("_comments")
+                        .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Post", b =>
-                {
-                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -285,7 +249,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Post", b =>
                 {
-                    b.Navigation("_comments");
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

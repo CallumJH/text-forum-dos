@@ -1,4 +1,7 @@
-﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
+﻿using Whispers.Chat.Core.Bounded_Contexts.Site_Moderation.Aggregates;
+using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
+using Whispers.Chat.Core.BoundedContexts.Posts;
+using Whispers.Chat.Core.Generated.ContributorAggregate;
 
 namespace Whispers.Chat.Infrastructure.Data;
 public class AppDbContext(DbContextOptions<AppDbContext> options,
@@ -7,6 +10,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options,
   private readonly IDomainEventDispatcher? _dispatcher = dispatcher;
 
   public DbSet<Contributor> Contributors => Set<Contributor>();
+  public DbSet<User> Users => Set<User>();
+  public DbSet<Post> Posts => Set<Post>();
+  public DbSet<Moderator> moderators => Set<Moderator>();
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {

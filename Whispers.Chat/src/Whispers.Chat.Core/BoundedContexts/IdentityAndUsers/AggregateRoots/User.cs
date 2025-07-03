@@ -1,4 +1,4 @@
-﻿namespace Whispers.Chat.Core.Bounded_Contexts.Identity_and_Users.Aggregates;
+﻿namespace Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 
 public class User : EntityBase<Guid>, IAggregateRoot, IAuditableEntity
 {
