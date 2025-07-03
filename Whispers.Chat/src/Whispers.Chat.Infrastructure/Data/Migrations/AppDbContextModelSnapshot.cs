@@ -9,7 +9,7 @@ using Whispers.Chat.Infrastructure.Data;
 
 namespace Whispers.Chat.Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(BaseDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -233,7 +233,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contributors");
+                    b.ToTable("Contributor");
                 });
 
             modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Comment", b =>
@@ -274,7 +274,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
                             b1.HasKey("ContributorId");
 
-                            b1.ToTable("Contributors");
+                            b1.ToTable("Contributor");
 
                             b1.WithOwner()
                                 .HasForeignKey("ContributorId");

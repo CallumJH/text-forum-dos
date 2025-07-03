@@ -1,4 +1,4 @@
-﻿namespace Whispers.Chat.Core.Bounded_Contexts.Site_Moderation.Aggregates;
+﻿namespace Whispers.Chat.Core.BoundedContexts.SiteModeration.Aggregates;
 
 public class Moderator : EntityBase<Guid>, IAggregateRoot, IAuditableEntity
 {

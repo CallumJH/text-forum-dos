@@ -8,8 +8,10 @@ public static class ServiceConfigs
 {
   public static IServiceCollection AddServiceConfigs(this IServiceCollection services, Microsoft.Extensions.Logging.ILogger logger, WebApplicationBuilder builder)
   {
-    services.AddInfrastructureServices(builder.Configuration, logger)
+    services.AddInfrastructureServices(builder.Configuration)
             .AddMediatrConfigs();
+
+    //TODO: Logger needs to be registered
 
 
     if (builder.Environment.IsDevelopment())

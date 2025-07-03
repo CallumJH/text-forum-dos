@@ -1,21 +1,25 @@
 ﻿using Whispers.Chat.Core.Generated.ContributorAggregate;
 using Whispers.Chat.Infrastructure.Data;
+using Whispers.Chat.Infrastructure.Data.Identity;
 
 namespace Whispers.Chat.IntegrationTests.Data;
 
 public abstract class BaseEfRepoTestFixture
 {
-  protected AppDbContext _dbContext;
+  protected BaseDbContext _dbContext;
 
   protected BaseEfRepoTestFixture()
   {
+    // This test fixture is getting changed for now im keeping it out
+
+
     var options = CreateNewContextOptions();
     var _fakeEventDispatcher = Substitute.For<IDomainEventDispatcher>();
 
-    _dbContext = new AppDbContext(options, _fakeEventDispatcher);
+    _dbContext = new BaseDbContext(options, _fakeEventDispatcher);
   }
 
-  protected static DbContextOptions<AppDbContext> CreateNewContextOptions()
+  protected static DbContextOptions<BaseDbContext> CreateNewContextOptions()
   {
     // Create a fresh service provider, and therefore a fresh
     // InMemory database instance.
@@ -25,7 +29,7 @@ public abstract class BaseEfRepoTestFixture
 
     // Create a new options instance telling the context to use an
     // InMemory database and the new service provider.
-    var builder = new DbContextOptionsBuilder<AppDbContext>();
+    var builder = new DbContextOptionsBuilder<BaseDbContext>();
     builder.UseInMemoryDatabase("cleanarchitecture")
            .UseInternalServiceProvider(serviceProvider);
 

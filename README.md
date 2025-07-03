@@ -9,25 +9,25 @@ An updated approach towards how I would make a neat text forum app
 We're making a simple chat / forum app here. 
 I would love to go big picture with it but lets get the basics working. 
 
-- [ ] Use DDD?
+- [X] Use DDD?
   - [ ] Use CQRS?
   - [ ] Use MediatR?
   - [ ] Use FluentValidation?
   - [ ] Use AutoMapper? ( Not sure about this one )
 - [ ] Use Serilog?
-- [ ] Use TDD?
+- [X] Use TDD?
   - [ ] Use FluentAssertions?
-  - [ ] Use xUnit
+  - [X] Use xUnit
 - [ ] Think About Frontend ( Depends on how far I get )
   - [ ] Otherwise postman / swagger
 - [ ] Neaten checklist
-- [ ] Use Aspire
-- [ ] Template out the DDD base with clean architecture ( https://github.com/ardalis/CleanArchitecture )
+- [X] Use Aspire
+- [X] Template out the DDD base with clean architecture ( https://github.com/ardalis/CleanArchitecture )
 
 ## Requirement Checklists
 
-- [ ] Backend
-  - [ ] Dotnet project + C#
+- [X] Backend
+  - [X] Dotnet project + C#
   - [ ] Datastore
     - [ ] Out of the box integration with dotnet
   - [ ] Authentication must be baked into the backend
@@ -58,3 +58,4 @@ I would love to go big picture with it but lets get the basics working.
 
 
 - [ ] Instructions TODO
+- [ ] Need to design a neat message servicing feature for the users to be notified

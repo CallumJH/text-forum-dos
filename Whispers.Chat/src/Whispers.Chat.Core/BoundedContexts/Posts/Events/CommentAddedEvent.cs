@@ -1,19 +1,16 @@
 ﻿namespace Whispers.Chat.Core.BoundedContexts.Posts.Events;
 
-/// <summary>
-/// Event raised when a new comment is added to a post
-/// </summary>
-public class CommentAddedEvent : DomainEventBase
+public record CommentAddedEvent : BaseDomainEvent
 {
-  public Guid CommentId { get; }
   public Guid PostId { get; }
+  public Guid CommentId { get; }
   public Guid AuthorId { get; }
   public string Content { get; }
 
-  public CommentAddedEvent(Guid commentId, Guid postId, Guid authorId, string content)
+  public CommentAddedEvent(Guid postId, Guid commentId, Guid authorId, string content)
   {
-    CommentId = commentId;
     PostId = postId;
+    CommentId = commentId;
     AuthorId = authorId;
     Content = content;
   }

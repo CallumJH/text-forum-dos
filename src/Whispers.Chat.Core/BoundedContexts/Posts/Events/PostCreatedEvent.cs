@@ -1,0 +1,18 @@
+using System;
+using Whispers.Chat.Core.DomainEvents;
+
+namespace Whispers.Chat.Core.BoundedContexts.Posts.Events;
+
+public class PostCreatedEvent : BaseDomainEvent
+{
+  public Guid PostId { get; }
+  public Guid AuthorId { get; }
+  public string Content { get; }
+
+  public PostCreatedEvent(Guid postId, Guid authorId, string content)
+  {
+    PostId = postId;
+    AuthorId = authorId;
+    Content = content;
+  }
+} 
