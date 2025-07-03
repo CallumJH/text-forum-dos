@@ -3,7 +3,7 @@
 public static class BaseDbContextExtensions
 {
   public static void AddApplicationDbContext(this IServiceCollection services, string connectionString) =>
-    services.AddDbContext<BaseDbContext>(options =>
+    services.AddDbContext<AppDbContext>(options =>
          options.UseSqlite(connectionString));
 
 }

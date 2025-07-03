@@ -10,7 +10,7 @@ using Whispers.Chat.Infrastructure.Data;
 
 namespace Whispers.Chat.Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(BaseDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20250703095124_CreatingUserAuth")]
     partial class CreatingUserAuth
     {

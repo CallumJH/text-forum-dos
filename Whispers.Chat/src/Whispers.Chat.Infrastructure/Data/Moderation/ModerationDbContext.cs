@@ -2,15 +2,13 @@
 
 namespace Whispers.Chat.Infrastructure.Data.Moderation;
 
-public class ModerationContext : BaseDbContext
+public class ModerationContext : AppDbContext
 {
   public ModerationContext(
-      DbContextOptions<ModerationContext> options,
+      DbContextOptions<AppDbContext> options,
       IDomainEventDispatcher domainEventDispatcher) : base(options, domainEventDispatcher)
   {
   }
-
-  public DbSet<Moderator> Moderators => Set<Moderator>();
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {

@@ -1,4 +1,5 @@
 ﻿using Ardalis.ListStartupServices;
+using Microsoft.EntityFrameworkCore;
 using Whispers.Chat.Infrastructure.Data;
 
 namespace Whispers.Chat.Web.Configurations;
@@ -35,7 +36,7 @@ public static class MiddlewareConfig
 
     try
     {
-      var context = services.GetRequiredService<BaseDbContext>();
+      var context = services.GetRequiredService<AppDbContext>();
       //          context.Database.Migrate();
       context.Database.EnsureCreated();
       await SeedData.InitializeAsync(context);

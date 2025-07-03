@@ -1,18 +1,26 @@
-﻿using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
+﻿using Ardalis.SharedKernel;
+using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 using Whispers.Chat.Core.BoundedContexts.Posts;
 using Whispers.Chat.Core.BoundedContexts.SiteModeration.Aggregates;
 using Whispers.Chat.Core.Generated.ContributorAggregate;
 
 namespace Whispers.Chat.Infrastructure.Data;
-public class AppDbContext(DbContextOptions<AppDbContext> options,
-  IDomainEventDispatcher? dispatcher) : DbContext(options)
-{
-  private readonly IDomainEventDispatcher? _dispatcher = dispatcher;
 
+public class AppDbContext : DbContext
+{
+  private readonly IDomainEventDispatcher? _dispatcher;
+
+  public AppDbContext(DbContextOptions<AppDbContext> options, IDomainEventDispatcher? dispatcher = null)
+      : base(options)
+  {
+    _dispatcher = dispatcher;
+  }
+
+  // All your DbSets
   public DbSet<Contributor> Contributors => Set<Contributor>();
   public DbSet<User> Users => Set<User>();
   public DbSet<Post> Posts => Set<Post>();
-  public DbSet<Moderator> moderators => Set<Moderator>();
+  public DbSet<Moderator> Moderators => Set<Moderator>();
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
@@ -20,24 +28,19 @@ public class AppDbContext(DbContextOptions<AppDbContext> options,
     modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
   }
 
+  // Handle domain events if you need them
   public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
   {
-    int result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+    // Dispatch domain events before saving
+    var domainEventEntities = ChangeTracker.Entries<EntityBase>()
+        .Select(po => po.Entity)
+        .Where(po => po.DomainEvents.Any())
+        .ToArray();
+    if(domainEventEntities.Any() && _dispatcher is not null)
+    {
+      await _dispatcher.DispatchAndClearEvents(domainEventEntities);
+    }
 
-    // ignore events if no dispatcher provided
-    if (_dispatcher == null) return result;
-
-    // dispatch events only if save was successful
-    var entitiesWithEvents = ChangeTracker.Entries<HasDomainEventsBase>()
-        .Select(e => (EntityBase)e.Entity)
-        .Where(e => e.DomainEvents.Any())
-        .ToList();
-
-    await _dispatcher.DispatchAndClearEvents(entitiesWithEvents);
-
-    return result;
+    return await base.SaveChangesAsync(cancellationToken);
   }
-
-  public override int SaveChanges() =>
-        SaveChangesAsync().GetAwaiter().GetResult();
 }

@@ -18,7 +18,7 @@ public partial class AddModerator : Migration
             Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
             UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
             IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-            ModeratedPostIds = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            ModeratedPostIds = table.Column<string>(type: "nvarchar(256)", nullable: false),
             DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
             DateUpdated = table.Column<DateTime>(type: "datetime2", nullable: true),
             CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),

@@ -9,18 +9,24 @@ using Whispers.Chat.Infrastructure.Data;
 
 namespace Whispers.Chat.Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(BaseDbContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.6");
 
             modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("CreatedBy")
@@ -39,6 +45,9 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                         .HasMaxLength(320)
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("IsAnonymous")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
@@ -48,14 +57,38 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
                     b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
@@ -72,7 +105,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                     b.HasIndex("IsAnonymous")
                         .HasDatabaseName("IX_Users_IsAnonymous");
 
-                    b.HasIndex("Username")
+                    b.HasIndex("UserName")
                         .IsUnique()
                         .HasDatabaseName("IX_Users_Username");
 
@@ -188,7 +221,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                     b.ToTable("Posts", (string)null);
                 });
 
-            modelBuilder.Entity("Whispers.Chat.Core.Bounded_Contexts.Site_Moderation.Aggregates.Moderator", b =>
+            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.SiteModeration.Aggregates.Moderator", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -198,13 +231,17 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(true);
 
                     b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("TEXT");
@@ -212,9 +249,27 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("_moderatedPostIds")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ModeratedPostIds");
+
                     b.HasKey("Id");
 
-                    b.ToTable("moderators");
+                    b.HasIndex("DateCreated")
+                        .HasDatabaseName("IX_Moderators_DateCreated");
+
+                    b.HasIndex("IsActive")
+                        .HasDatabaseName("IX_Moderators_IsActive");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Moderators_UserId");
+
+                    b.HasIndex("IsActive", "DateCreated")
+                        .HasDatabaseName("IX_Moderators_IsActive_DateCreated");
+
+                    b.ToTable("Moderators", (string)null);
                 });
 
             modelBuilder.Entity("Whispers.Chat.Core.Generated.ContributorAggregate.Contributor", b =>
@@ -233,7 +288,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contributor");
+                    b.ToTable("Contributors");
                 });
 
             modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Comment", b =>
@@ -250,6 +305,15 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                     b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", null)
                         .WithMany()
                         .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.SiteModeration.Aggregates.Moderator", b =>
+                {
+                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
@@ -274,7 +338,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
                             b1.HasKey("ContributorId");
 
-                            b1.ToTable("Contributor");
+                            b1.ToTable("Contributors");
 
                             b1.WithOwner()
                                 .HasForeignKey("ContributorId");

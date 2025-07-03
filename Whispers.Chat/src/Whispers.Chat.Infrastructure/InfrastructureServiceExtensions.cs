@@ -3,9 +3,6 @@ using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 using Whispers.Chat.Core.Generated.Interfaces;
 using Whispers.Chat.Core.Generated.Services;
 using Whispers.Chat.Infrastructure.Data;
-using Whispers.Chat.Infrastructure.Data.Identity;
-using Whispers.Chat.Infrastructure.Data.Moderation;
-using Whispers.Chat.Infrastructure.Data.Posts;
 using Whispers.Chat.Infrastructure.Data.Queries;
 using Whispers.Chat.UseCases.Contributors.List;
 
@@ -15,16 +12,10 @@ public static class InfrastructureServiceExtensions
 {
   public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
   {
-    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    var connectionString = configuration.GetConnectionString("SqliteConnection");
 
     // Register all DbContexts
-    services.AddDbContext<IdentityContext>(options =>
-      options.UseSqlite(connectionString));
-
-    services.AddDbContext<PostsContext>(options =>
-      options.UseSqlite(connectionString));
-
-    services.AddDbContext<ModerationContext>(options =>
+    services.AddDbContext<AppDbContext>(options =>
       options.UseSqlite(connectionString));
 
     services.AddIdentity<User, Role>(options =>
@@ -46,7 +37,7 @@ public static class InfrastructureServiceExtensions
       options.User.RequireUniqueEmail = true;
       options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     })
-    .AddEntityFrameworkStores<IdentityContext>()
+    .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
     services.ConfigureApplicationCookie(options =>
