@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
     <PackageReference Include="Duende.IdentityServer" />
+    <PackageReference Include="Duende.IdentityServer.EntityFramework" />
     <PackageReference Include="MailKit" />
     <PackageReference Include="MediatR" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" />

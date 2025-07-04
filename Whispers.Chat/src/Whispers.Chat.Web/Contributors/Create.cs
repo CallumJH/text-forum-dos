@@ -8,7 +8,7 @@ namespace Whispers.Chat.Web.Contributors;
 /// <remarks>
 /// Creates a new Contributor given a name.
 /// </remarks>
-public class Create(IMediator _mediator)
+public class Register(IMediator _mediator)
   : Endpoint<CreateContributorRequest, CreateContributorResponse>
 {
   public override void Configure()

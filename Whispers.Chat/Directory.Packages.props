@@ -12,6 +12,8 @@
     <PackageVersion Include="Ardalis.Specification" Version="8.0.0" />
     <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0" />
     <PackageVersion Include="Duende.IdentityServer" Version="7.2.4" />
+    <PackageVersion Include="Duende.IdentityServer.AspNetIdentity" Version="7.2.4" />
+    <PackageVersion Include="Duende.IdentityServer.EntityFramework" Version="7.2.4" />
     <PackageVersion Include="MailKit" Version="4.3.0" />
     <PackageVersion Include="MediatR" Version="12.2.0" />
     <!-- ASP.NET Core & Entity Framework -->
@@ -50,7 +52,7 @@
     <PackageVersion Include="ReportGenerator" Version="5.2.1" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.6" />
     <PackageVersion Include="Ardalis.HttpClientTestExtensions" Version="4.2.0" />
-    <PackageVersion Include="Aspire.Hosting.Testing" Version="9.0.0" />
+    <PackageVersion Include="Aspire.Hosting.Testing" Version="9.3.1" />
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.0.0" />
     <!-- Web Dependencies -->
     <PackageVersion Include="Ardalis.ListStartupServices" Version="1.1.4" />

@@ -20,6 +20,9 @@ builder.AddLoggerConfigs();
 var appLogger = new SerilogLoggerFactory(logger)
     .CreateLogger<Program>();
 
+var migrationsAssembly = typeof(IdentityContext).Assembly.GetName().Name;
+var sqliteDbConnectionString = builder.Configuration.GetConnectionString("SqliteConnection");
+
 builder.Services.AddOptionConfigs(builder.Configuration, appLogger, builder);
 builder.Services.AddServiceConfigs(appLogger, builder);
 
@@ -29,19 +32,36 @@ builder.Services.AddFastEndpoints()
                   o.ShortSchemaNames = true;
                 });
 
+// Configure IdentityServer with both Configuration and Operational stores
+builder.Services.AddIdentityServer(
+  setupAction: options =>
+  {
+    options.Events.RaiseErrorEvents = true;
+    options.Events.RaiseInformationEvents = true;
+    options.Events.RaiseFailureEvents = true;
+    options.Events.RaiseSuccessEvents = true;
+    options.EmitStaticAudienceClaim = true;
+  })
+  .AddConfigurationStore(options =>
+    options.ConfigureDbContext = db => db.UseSqlite(sqliteDbConnectionString,
+      sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
+  .AddOperationalStore(options =>
+    options.ConfigureDbContext = db => db.UseSqlite(sqliteDbConnectionString,
+      sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
+
 builder.AddServiceDefaults();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
+    options.UseSqlite(sqliteDbConnectionString));
 
 builder.Services.AddDbContext<PostsContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
+    options.UseSqlite(sqliteDbConnectionString));
 
 builder.Services.AddDbContext<ModerationContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
+    options.UseSqlite(sqliteDbConnectionString));
 
 builder.Services.AddDbContext<IdentityContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
+    options.UseSqlite(sqliteDbConnectionString));
 
 var app = builder.Build();
 

@@ -9,4 +9,10 @@
     <ProjectReference Include="..\Whispers.Chat.Core\Whispers.Chat.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Moderation\" />
+    <Folder Include="Users\Create\" />
+    <Folder Include="Users\Delete\" />
+  </ItemGroup>
+
 </Project>

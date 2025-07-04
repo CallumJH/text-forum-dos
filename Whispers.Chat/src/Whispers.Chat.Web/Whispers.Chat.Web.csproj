@@ -12,6 +12,8 @@
     <PackageReference Include="Ardalis.ListStartupServices" />
     <PackageReference Include="Ardalis.Result" />
     <PackageReference Include="Ardalis.Result.AspNetCore" />
+    <PackageReference Include="Duende.IdentityServer.AspNetIdentity" />
+    <PackageReference Include="Duende.IdentityServer.EntityFramework" />
     <PackageReference Include="FastEndpoints" />
     <PackageReference Include="FastEndpoints.Swagger" />
     <PackageReference Include="MediatR" />
@@ -29,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MinimalApis\" />
+    <Folder Include="MinimalApis\Moderation\" />
   </ItemGroup>
 
 </Project>
