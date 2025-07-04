@@ -3,10 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Whispers.Chat.Infrastructure.Data;
 
 #nullable disable
 
-namespace Whispers.Chat.Infrastructure.Data.Migrations
+namespace Whispers.Chat.Infrastructure.Data.IdentityMigrations.IdentityServer
 {
     [DbContext(typeof(IdentityContext))]
     partial class IdentityContextModelSnapshot : ModelSnapshot

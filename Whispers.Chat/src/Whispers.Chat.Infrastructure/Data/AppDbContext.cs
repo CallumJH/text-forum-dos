@@ -18,7 +18,6 @@ public class AppDbContext : DbContext
 
   // All your DbSets
   public DbSet<Contributor> Contributors => Set<Contributor>();
-  public DbSet<User> Users => Set<User>();
   public DbSet<Post> Posts => Set<Post>();
   public DbSet<Moderator> Moderators => Set<Moderator>();
 

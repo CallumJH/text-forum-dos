@@ -7,12 +7,25 @@ Create New
 dotnet ef migrations add {MIGRATIONNAME} -c AppDbContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj -o Data/Migrations
 
 Update to latest
+
+# Identity Duende
+dotnet ef database update -c PersistedGrantDbContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj
+
+# Identity Config
+dotnet ef database update -c ConfigurationDbContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj
+
+# Identity Server
+dotnet ef database update -c IdentityContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj
+
+# AppContext
 dotnet ef database update -c AppDbContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj
+
+
 
 # Keep in mind the following
 
 # For Identity migrations
-dotnet ef migrations add InitialIdentity -c IdentityContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj -o Data/Migrations/Identity
+dotnet ef migrations add InitialIdentity -c IdentityContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj -o Data/IdentityMigrations/IdentityServer
 
 # For App migrations
 dotnet ef migrations add InitialApp -c AppDbContext -p ../Whispers.Chat.Infrastructure/Whispers.Chat.Infrastructure.csproj -s Whispers.Chat.Web.csproj -o Data/Migrations/App

@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Whispers.Chat.Infrastructure.Data;
 
 #nullable disable
 
-namespace Whispers.Chat.Infrastructure.Data.Migrations
+namespace Whispers.Chat.Infrastructure.Data.IdentityMigrations.IdentityServer
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20250704194457_InitialIdentityServer")]
+    [Migration("20250704195702_InitialIdentityServer")]
     partial class InitialIdentityServer
     {
         /// <inheritdoc />

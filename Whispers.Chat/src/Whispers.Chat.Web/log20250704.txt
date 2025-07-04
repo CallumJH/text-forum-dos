@@ -582,3 +582,670 @@ VALUES ('20250704191801_InitialIdentityServer', '9.0.6');
 2025-07-04 21:24:08.938 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 DELETE FROM "__EFMigrationsLock";
 2025-07-04 21:44:57.569 +02:00 [WRN] The property 'User.LikedPostIds' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-04 21:58:14.732 +02:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-04 21:58:14.785 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-04 21:58:14.796 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-07-04 19:58:14.7893495+00:00');
+SELECT changes();
+2025-07-04 21:58:14.840 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2025-07-04 21:58:14.844 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-07-04 21:58:14.846 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-04 21:58:14.853 +02:00 [INF] Applying migration '20250704195702_InitialIdentityServer'.
+2025-07-04 21:58:14.872 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Roles" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Roles" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "NormalizedName" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL
+);
+2025-07-04 21:58:14.874 +02:00 [ERR] Failed executing DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Users" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Users" PRIMARY KEY,
+    "LikedPostIds" TEXT NOT NULL,
+    "IsAnonymous" INTEGER NOT NULL,
+    "DateCreated" TEXT NOT NULL,
+    "DateUpdated" TEXT NULL,
+    "CreatedBy" TEXT NOT NULL,
+    "UpdatedBy" TEXT NULL,
+    "UserName" TEXT NULL,
+    "NormalizedUserName" TEXT NULL,
+    "Email" TEXT NULL,
+    "NormalizedEmail" TEXT NULL,
+    "EmailConfirmed" INTEGER NOT NULL,
+    "PasswordHash" TEXT NULL,
+    "SecurityStamp" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL,
+    "PhoneNumber" TEXT NULL,
+    "PhoneNumberConfirmed" INTEGER NOT NULL,
+    "TwoFactorEnabled" INTEGER NOT NULL,
+    "LockoutEnd" TEXT NULL,
+    "LockoutEnabled" INTEGER NOT NULL,
+    "AccessFailedCount" INTEGER NOT NULL
+);
+2025-07-04 22:00:01.133 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA journal_mode = 'wal';
+2025-07-04 22:00:01.157 +02:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-04 22:00:01.163 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-04 22:00:01.169 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsLock" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK___EFMigrationsLock" PRIMARY KEY,
+    "Timestamp" TEXT NOT NULL
+);
+2025-07-04 22:00:01.172 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-07-04 20:00:01.1704297+00:00');
+SELECT changes();
+2025-07-04 22:00:01.213 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2025-07-04 22:00:01.221 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-07-04 22:00:01.222 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-04 22:00:01.228 +02:00 [INF] Applying migration '20250704191841_InitialIdentityServer'.
+2025-07-04 22:00:01.241 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "DeviceCodes" (
+    "UserCode" TEXT NOT NULL CONSTRAINT "PK_DeviceCodes" PRIMARY KEY,
+    "DeviceCode" TEXT NOT NULL,
+    "SubjectId" TEXT NULL,
+    "SessionId" TEXT NULL,
+    "ClientId" TEXT NOT NULL,
+    "Description" TEXT NULL,
+    "CreationTime" TEXT NOT NULL,
+    "Expiration" TEXT NOT NULL,
+    "Data" TEXT NOT NULL
+);
+2025-07-04 22:00:01.241 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Keys" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Keys" PRIMARY KEY,
+    "Version" INTEGER NOT NULL,
+    "Created" TEXT NOT NULL,
+    "Use" TEXT NULL,
+    "Algorithm" TEXT NOT NULL,
+    "IsX509Certificate" INTEGER NOT NULL,
+    "DataProtected" INTEGER NOT NULL,
+    "Data" TEXT NOT NULL
+);
+2025-07-04 22:00:01.242 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "PersistedGrants" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_PersistedGrants" PRIMARY KEY AUTOINCREMENT,
+    "Key" TEXT NULL,
+    "Type" TEXT NOT NULL,
+    "SubjectId" TEXT NULL,
+    "SessionId" TEXT NULL,
+    "ClientId" TEXT NOT NULL,
+    "Description" TEXT NULL,
+    "CreationTime" TEXT NOT NULL,
+    "Expiration" TEXT NULL,
+    "ConsumedTime" TEXT NULL,
+    "Data" TEXT NOT NULL
+);
+2025-07-04 22:00:01.242 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "PushedAuthorizationRequests" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_PushedAuthorizationRequests" PRIMARY KEY AUTOINCREMENT,
+    "ReferenceValueHash" TEXT NOT NULL,
+    "ExpiresAtUtc" TEXT NOT NULL,
+    "Parameters" TEXT NOT NULL
+);
+2025-07-04 22:00:01.242 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ServerSideSessions" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ServerSideSessions" PRIMARY KEY AUTOINCREMENT,
+    "Key" TEXT NOT NULL,
+    "Scheme" TEXT NOT NULL,
+    "SubjectId" TEXT NOT NULL,
+    "SessionId" TEXT NULL,
+    "DisplayName" TEXT NULL,
+    "Created" TEXT NOT NULL,
+    "Renewed" TEXT NOT NULL,
+    "Expires" TEXT NULL,
+    "Data" TEXT NOT NULL
+);
+2025-07-04 22:00:01.242 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_DeviceCodes_DeviceCode" ON "DeviceCodes" ("DeviceCode");
+2025-07-04 22:00:01.243 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_DeviceCodes_Expiration" ON "DeviceCodes" ("Expiration");
+2025-07-04 22:00:01.243 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Keys_Use" ON "Keys" ("Use");
+2025-07-04 22:00:01.243 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_PersistedGrants_ConsumedTime" ON "PersistedGrants" ("ConsumedTime");
+2025-07-04 22:00:01.243 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_PersistedGrants_Expiration" ON "PersistedGrants" ("Expiration");
+2025-07-04 22:00:01.243 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_PersistedGrants_Key" ON "PersistedGrants" ("Key");
+2025-07-04 22:00:01.243 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_PersistedGrants_SubjectId_ClientId_Type" ON "PersistedGrants" ("SubjectId", "ClientId", "Type");
+2025-07-04 22:00:01.243 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_PersistedGrants_SubjectId_SessionId_Type" ON "PersistedGrants" ("SubjectId", "SessionId", "Type");
+2025-07-04 22:00:01.243 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_PushedAuthorizationRequests_ExpiresAtUtc" ON "PushedAuthorizationRequests" ("ExpiresAtUtc");
+2025-07-04 22:00:01.244 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_PushedAuthorizationRequests_ReferenceValueHash" ON "PushedAuthorizationRequests" ("ReferenceValueHash");
+2025-07-04 22:00:01.244 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ServerSideSessions_DisplayName" ON "ServerSideSessions" ("DisplayName");
+2025-07-04 22:00:01.244 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ServerSideSessions_Expires" ON "ServerSideSessions" ("Expires");
+2025-07-04 22:00:01.245 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ServerSideSessions_Key" ON "ServerSideSessions" ("Key");
+2025-07-04 22:00:01.245 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ServerSideSessions_SessionId" ON "ServerSideSessions" ("SessionId");
+2025-07-04 22:00:01.245 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ServerSideSessions_SubjectId" ON "ServerSideSessions" ("SubjectId");
+2025-07-04 22:00:01.245 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250704191841_InitialIdentityServer', '9.0.6');
+2025-07-04 22:00:01.250 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+2025-07-04 22:00:18.287 +02:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-04 22:00:18.331 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-04 22:00:18.341 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-07-04 20:00:18.3345021+00:00');
+SELECT changes();
+2025-07-04 22:00:18.383 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2025-07-04 22:00:18.388 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-07-04 22:00:18.389 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-04 22:00:18.396 +02:00 [INF] Applying migration '20250704191801_InitialIdentityServer'.
+2025-07-04 22:00:18.440 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ApiResources" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResources" PRIMARY KEY AUTOINCREMENT,
+    "Enabled" INTEGER NOT NULL,
+    "Name" TEXT NOT NULL,
+    "DisplayName" TEXT NULL,
+    "Description" TEXT NULL,
+    "AllowedAccessTokenSigningAlgorithms" TEXT NULL,
+    "ShowInDiscoveryDocument" INTEGER NOT NULL,
+    "RequireResourceIndicator" INTEGER NOT NULL,
+    "Created" TEXT NOT NULL,
+    "Updated" TEXT NULL,
+    "LastAccessed" TEXT NULL,
+    "NonEditable" INTEGER NOT NULL
+);
+2025-07-04 22:00:18.440 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ApiScopes" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiScopes" PRIMARY KEY AUTOINCREMENT,
+    "Enabled" INTEGER NOT NULL,
+    "Name" TEXT NOT NULL,
+    "DisplayName" TEXT NULL,
+    "Description" TEXT NULL,
+    "Required" INTEGER NOT NULL,
+    "Emphasize" INTEGER NOT NULL,
+    "ShowInDiscoveryDocument" INTEGER NOT NULL,
+    "Created" TEXT NOT NULL,
+    "Updated" TEXT NULL,
+    "LastAccessed" TEXT NULL,
+    "NonEditable" INTEGER NOT NULL
+);
+2025-07-04 22:00:18.441 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Clients" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Clients" PRIMARY KEY AUTOINCREMENT,
+    "Enabled" INTEGER NOT NULL,
+    "ClientId" TEXT NOT NULL,
+    "ProtocolType" TEXT NOT NULL,
+    "RequireClientSecret" INTEGER NOT NULL,
+    "ClientName" TEXT NULL,
+    "Description" TEXT NULL,
+    "ClientUri" TEXT NULL,
+    "LogoUri" TEXT NULL,
+    "RequireConsent" INTEGER NOT NULL,
+    "AllowRememberConsent" INTEGER NOT NULL,
+    "AlwaysIncludeUserClaimsInIdToken" INTEGER NOT NULL,
+    "RequirePkce" INTEGER NOT NULL,
+    "AllowPlainTextPkce" INTEGER NOT NULL,
+    "RequireRequestObject" INTEGER NOT NULL,
+    "AllowAccessTokensViaBrowser" INTEGER NOT NULL,
+    "RequireDPoP" INTEGER NOT NULL,
+    "DPoPValidationMode" INTEGER NOT NULL,
+    "DPoPClockSkew" TEXT NOT NULL,
+    "FrontChannelLogoutUri" TEXT NULL,
+    "FrontChannelLogoutSessionRequired" INTEGER NOT NULL,
+    "BackChannelLogoutUri" TEXT NULL,
+    "BackChannelLogoutSessionRequired" INTEGER NOT NULL,
+    "AllowOfflineAccess" INTEGER NOT NULL,
+    "IdentityTokenLifetime" INTEGER NOT NULL,
+    "AllowedIdentityTokenSigningAlgorithms" TEXT NULL,
+    "AccessTokenLifetime" INTEGER NOT NULL,
+    "AuthorizationCodeLifetime" INTEGER NOT NULL,
+    "ConsentLifetime" INTEGER NULL,
+    "AbsoluteRefreshTokenLifetime" INTEGER NOT NULL,
+    "SlidingRefreshTokenLifetime" INTEGER NOT NULL,
+    "RefreshTokenUsage" INTEGER NOT NULL,
+    "UpdateAccessTokenClaimsOnRefresh" INTEGER NOT NULL,
+    "RefreshTokenExpiration" INTEGER NOT NULL,
+    "AccessTokenType" INTEGER NOT NULL,
+    "EnableLocalLogin" INTEGER NOT NULL,
+    "IncludeJwtId" INTEGER NOT NULL,
+    "AlwaysSendClientClaims" INTEGER NOT NULL,
+    "ClientClaimsPrefix" TEXT NULL,
+    "PairWiseSubjectSalt" TEXT NULL,
+    "InitiateLoginUri" TEXT NULL,
+    "UserSsoLifetime" INTEGER NULL,
+    "UserCodeType" TEXT NULL,
+    "DeviceCodeLifetime" INTEGER NOT NULL,
+    "CibaLifetime" INTEGER NULL,
+    "PollingInterval" INTEGER NULL,
+    "CoordinateLifetimeWithUserSession" INTEGER NULL,
+    "Created" TEXT NOT NULL,
+    "Updated" TEXT NULL,
+    "LastAccessed" TEXT NULL,
+    "NonEditable" INTEGER NOT NULL,
+    "PushedAuthorizationLifetime" INTEGER NULL,
+    "RequirePushedAuthorization" INTEGER NOT NULL
+);
+2025-07-04 22:00:18.441 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "IdentityProviders" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_IdentityProviders" PRIMARY KEY AUTOINCREMENT,
+    "Scheme" TEXT NOT NULL,
+    "DisplayName" TEXT NULL,
+    "Enabled" INTEGER NOT NULL,
+    "Type" TEXT NOT NULL,
+    "Properties" TEXT NULL,
+    "Created" TEXT NOT NULL,
+    "Updated" TEXT NULL,
+    "LastAccessed" TEXT NULL,
+    "NonEditable" INTEGER NOT NULL
+);
+2025-07-04 22:00:18.441 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "IdentityResources" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_IdentityResources" PRIMARY KEY AUTOINCREMENT,
+    "Enabled" INTEGER NOT NULL,
+    "Name" TEXT NOT NULL,
+    "DisplayName" TEXT NULL,
+    "Description" TEXT NULL,
+    "Required" INTEGER NOT NULL,
+    "Emphasize" INTEGER NOT NULL,
+    "ShowInDiscoveryDocument" INTEGER NOT NULL,
+    "Created" TEXT NOT NULL,
+    "Updated" TEXT NULL,
+    "NonEditable" INTEGER NOT NULL
+);
+2025-07-04 22:00:18.441 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ApiResourceClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResourceClaims" PRIMARY KEY AUTOINCREMENT,
+    "ApiResourceId" INTEGER NOT NULL,
+    "Type" TEXT NOT NULL,
+    CONSTRAINT "FK_ApiResourceClaims_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.441 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ApiResourceProperties" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResourceProperties" PRIMARY KEY AUTOINCREMENT,
+    "ApiResourceId" INTEGER NOT NULL,
+    "Key" TEXT NOT NULL,
+    "Value" TEXT NOT NULL,
+    CONSTRAINT "FK_ApiResourceProperties_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.441 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ApiResourceScopes" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResourceScopes" PRIMARY KEY AUTOINCREMENT,
+    "Scope" TEXT NOT NULL,
+    "ApiResourceId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ApiResourceScopes_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.442 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ApiResourceSecrets" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiResourceSecrets" PRIMARY KEY AUTOINCREMENT,
+    "ApiResourceId" INTEGER NOT NULL,
+    "Description" TEXT NULL,
+    "Value" TEXT NOT NULL,
+    "Expiration" TEXT NULL,
+    "Type" TEXT NOT NULL,
+    "Created" TEXT NOT NULL,
+    CONSTRAINT "FK_ApiResourceSecrets_ApiResources_ApiResourceId" FOREIGN KEY ("ApiResourceId") REFERENCES "ApiResources" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.442 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ApiScopeClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiScopeClaims" PRIMARY KEY AUTOINCREMENT,
+    "ScopeId" INTEGER NOT NULL,
+    "Type" TEXT NOT NULL,
+    CONSTRAINT "FK_ApiScopeClaims_ApiScopes_ScopeId" FOREIGN KEY ("ScopeId") REFERENCES "ApiScopes" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.442 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ApiScopeProperties" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ApiScopeProperties" PRIMARY KEY AUTOINCREMENT,
+    "ScopeId" INTEGER NOT NULL,
+    "Key" TEXT NOT NULL,
+    "Value" TEXT NOT NULL,
+    CONSTRAINT "FK_ApiScopeProperties_ApiScopes_ScopeId" FOREIGN KEY ("ScopeId") REFERENCES "ApiScopes" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.442 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientClaims" PRIMARY KEY AUTOINCREMENT,
+    "Type" TEXT NOT NULL,
+    "Value" TEXT NOT NULL,
+    "ClientId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ClientClaims_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.442 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientCorsOrigins" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientCorsOrigins" PRIMARY KEY AUTOINCREMENT,
+    "Origin" TEXT NOT NULL,
+    "ClientId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ClientCorsOrigins_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.442 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientGrantTypes" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientGrantTypes" PRIMARY KEY AUTOINCREMENT,
+    "GrantType" TEXT NOT NULL,
+    "ClientId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ClientGrantTypes_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.442 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientIdPRestrictions" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientIdPRestrictions" PRIMARY KEY AUTOINCREMENT,
+    "Provider" TEXT NOT NULL,
+    "ClientId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ClientIdPRestrictions_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.638 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientPostLogoutRedirectUris" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientPostLogoutRedirectUris" PRIMARY KEY AUTOINCREMENT,
+    "PostLogoutRedirectUri" TEXT NOT NULL,
+    "ClientId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ClientPostLogoutRedirectUris_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.639 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientProperties" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientProperties" PRIMARY KEY AUTOINCREMENT,
+    "ClientId" INTEGER NOT NULL,
+    "Key" TEXT NOT NULL,
+    "Value" TEXT NOT NULL,
+    CONSTRAINT "FK_ClientProperties_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.639 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientRedirectUris" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientRedirectUris" PRIMARY KEY AUTOINCREMENT,
+    "RedirectUri" TEXT NOT NULL,
+    "ClientId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ClientRedirectUris_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.639 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientScopes" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientScopes" PRIMARY KEY AUTOINCREMENT,
+    "Scope" TEXT NOT NULL,
+    "ClientId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ClientScopes_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.639 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ClientSecrets" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ClientSecrets" PRIMARY KEY AUTOINCREMENT,
+    "ClientId" INTEGER NOT NULL,
+    "Description" TEXT NULL,
+    "Value" TEXT NOT NULL,
+    "Expiration" TEXT NULL,
+    "Type" TEXT NOT NULL,
+    "Created" TEXT NOT NULL,
+    CONSTRAINT "FK_ClientSecrets_Clients_ClientId" FOREIGN KEY ("ClientId") REFERENCES "Clients" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.639 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "IdentityResourceClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_IdentityResourceClaims" PRIMARY KEY AUTOINCREMENT,
+    "IdentityResourceId" INTEGER NOT NULL,
+    "Type" TEXT NOT NULL,
+    CONSTRAINT "FK_IdentityResourceClaims_IdentityResources_IdentityResourceId" FOREIGN KEY ("IdentityResourceId") REFERENCES "IdentityResources" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.639 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "IdentityResourceProperties" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_IdentityResourceProperties" PRIMARY KEY AUTOINCREMENT,
+    "IdentityResourceId" INTEGER NOT NULL,
+    "Key" TEXT NOT NULL,
+    "Value" TEXT NOT NULL,
+    CONSTRAINT "FK_IdentityResourceProperties_IdentityResources_IdentityResourceId" FOREIGN KEY ("IdentityResourceId") REFERENCES "IdentityResources" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:18.639 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ApiResourceClaims_ApiResourceId_Type" ON "ApiResourceClaims" ("ApiResourceId", "Type");
+2025-07-04 22:00:18.640 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ApiResourceProperties_ApiResourceId_Key" ON "ApiResourceProperties" ("ApiResourceId", "Key");
+2025-07-04 22:00:18.640 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ApiResources_Name" ON "ApiResources" ("Name");
+2025-07-04 22:00:19.686 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ApiResourceScopes_ApiResourceId_Scope" ON "ApiResourceScopes" ("ApiResourceId", "Scope");
+2025-07-04 22:00:19.686 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ApiResourceSecrets_ApiResourceId" ON "ApiResourceSecrets" ("ApiResourceId");
+2025-07-04 22:00:19.686 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ApiScopeClaims_ScopeId_Type" ON "ApiScopeClaims" ("ScopeId", "Type");
+2025-07-04 22:00:19.686 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ApiScopeProperties_ScopeId_Key" ON "ApiScopeProperties" ("ScopeId", "Key");
+2025-07-04 22:00:19.687 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ApiScopes_Name" ON "ApiScopes" ("Name");
+2025-07-04 22:00:19.687 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ClientClaims_ClientId_Type_Value" ON "ClientClaims" ("ClientId", "Type", "Value");
+2025-07-04 22:00:19.687 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ClientCorsOrigins_ClientId_Origin" ON "ClientCorsOrigins" ("ClientId", "Origin");
+2025-07-04 22:00:19.687 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ClientGrantTypes_ClientId_GrantType" ON "ClientGrantTypes" ("ClientId", "GrantType");
+2025-07-04 22:00:19.688 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ClientIdPRestrictions_ClientId_Provider" ON "ClientIdPRestrictions" ("ClientId", "Provider");
+2025-07-04 22:00:19.688 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ClientPostLogoutRedirectUris_ClientId_PostLogoutRedirectUri" ON "ClientPostLogoutRedirectUris" ("ClientId", "PostLogoutRedirectUri");
+2025-07-04 22:00:19.688 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ClientProperties_ClientId_Key" ON "ClientProperties" ("ClientId", "Key");
+2025-07-04 22:00:19.688 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ClientRedirectUris_ClientId_RedirectUri" ON "ClientRedirectUris" ("ClientId", "RedirectUri");
+2025-07-04 22:00:19.689 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_Clients_ClientId" ON "Clients" ("ClientId");
+2025-07-04 22:00:19.689 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_ClientScopes_ClientId_Scope" ON "ClientScopes" ("ClientId", "Scope");
+2025-07-04 22:00:19.689 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ClientSecrets_ClientId" ON "ClientSecrets" ("ClientId");
+2025-07-04 22:00:19.689 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_IdentityProviders_Scheme" ON "IdentityProviders" ("Scheme");
+2025-07-04 22:00:19.690 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_IdentityResourceClaims_IdentityResourceId_Type" ON "IdentityResourceClaims" ("IdentityResourceId", "Type");
+2025-07-04 22:00:19.690 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_IdentityResourceProperties_IdentityResourceId_Key" ON "IdentityResourceProperties" ("IdentityResourceId", "Key");
+2025-07-04 22:00:19.690 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_IdentityResources_Name" ON "IdentityResources" ("Name");
+2025-07-04 22:00:19.690 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250704191801_InitialIdentityServer', '9.0.6');
+2025-07-04 22:00:20.352 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+2025-07-04 22:00:48.247 +02:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-04 22:00:48.294 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-04 22:00:48.303 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-07-04 20:00:48.2970422+00:00');
+SELECT changes();
+2025-07-04 22:00:48.343 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2025-07-04 22:00:48.347 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-07-04 22:00:48.349 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-04 22:00:48.356 +02:00 [INF] Applying migration '20250704195702_InitialIdentityServer'.
+2025-07-04 22:00:48.374 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Roles" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Roles" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "NormalizedName" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL
+);
+2025-07-04 22:00:48.374 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Users" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Users" PRIMARY KEY,
+    "LikedPostIds" TEXT NOT NULL,
+    "IsAnonymous" INTEGER NOT NULL,
+    "DateCreated" TEXT NOT NULL,
+    "DateUpdated" TEXT NULL,
+    "CreatedBy" TEXT NOT NULL,
+    "UpdatedBy" TEXT NULL,
+    "UserName" TEXT NULL,
+    "NormalizedUserName" TEXT NULL,
+    "Email" TEXT NULL,
+    "NormalizedEmail" TEXT NULL,
+    "EmailConfirmed" INTEGER NOT NULL,
+    "PasswordHash" TEXT NULL,
+    "SecurityStamp" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL,
+    "PhoneNumber" TEXT NULL,
+    "PhoneNumberConfirmed" INTEGER NOT NULL,
+    "TwoFactorEnabled" INTEGER NOT NULL,
+    "LockoutEnd" TEXT NULL,
+    "LockoutEnabled" INTEGER NOT NULL,
+    "AccessFailedCount" INTEGER NOT NULL
+);
+2025-07-04 22:00:48.374 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "RoleClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_RoleClaims" PRIMARY KEY AUTOINCREMENT,
+    "RoleId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_RoleClaims_Roles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "Roles" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:48.375 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "UserClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_UserClaims" PRIMARY KEY AUTOINCREMENT,
+    "UserId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_UserClaims_Users_UserId" FOREIGN KEY ("UserId") REFERENCES "Users" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:48.375 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "UserLogins" (
+    "LoginProvider" TEXT NOT NULL,
+    "ProviderKey" TEXT NOT NULL,
+    "ProviderDisplayName" TEXT NULL,
+    "UserId" TEXT NOT NULL,
+    CONSTRAINT "PK_UserLogins" PRIMARY KEY ("LoginProvider", "ProviderKey"),
+    CONSTRAINT "FK_UserLogins_Users_UserId" FOREIGN KEY ("UserId") REFERENCES "Users" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:48.375 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "UserRoles" (
+    "UserId" TEXT NOT NULL,
+    "RoleId" TEXT NOT NULL,
+    CONSTRAINT "PK_UserRoles" PRIMARY KEY ("UserId", "RoleId"),
+    CONSTRAINT "FK_UserRoles_Roles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "Roles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_UserRoles_Users_UserId" FOREIGN KEY ("UserId") REFERENCES "Users" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:48.375 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "UserTokens" (
+    "UserId" TEXT NOT NULL,
+    "LoginProvider" TEXT NOT NULL,
+    "Name" TEXT NOT NULL,
+    "Value" TEXT NULL,
+    CONSTRAINT "PK_UserTokens" PRIMARY KEY ("UserId", "LoginProvider", "Name"),
+    CONSTRAINT "FK_UserTokens_Users_UserId" FOREIGN KEY ("UserId") REFERENCES "Users" ("Id") ON DELETE CASCADE
+);
+2025-07-04 22:00:48.375 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_RoleClaims_RoleId" ON "RoleClaims" ("RoleId");
+2025-07-04 22:00:48.375 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "RoleNameIndex" ON "Roles" ("NormalizedName");
+2025-07-04 22:00:48.376 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_UserClaims_UserId" ON "UserClaims" ("UserId");
+2025-07-04 22:00:48.376 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_UserLogins_UserId" ON "UserLogins" ("UserId");
+2025-07-04 22:00:48.376 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_UserRoles_RoleId" ON "UserRoles" ("RoleId");
+2025-07-04 22:00:48.376 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "EmailIndex" ON "Users" ("NormalizedEmail");
+2025-07-04 22:00:48.376 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "UserNameIndex" ON "Users" ("NormalizedUserName");
+2025-07-04 22:00:48.376 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250704195702_InitialIdentityServer', '9.0.6');
+2025-07-04 22:00:48.382 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+2025-07-04 22:01:39.075 +02:00 [WRN] The property 'User.LikedPostIds' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-04 22:01:39.099 +02:00 [WRN] The property 'Post.Tags' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-04 22:01:39.100 +02:00 [WRN] The property 'Post._likedByUserIds' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-04 22:01:39.100 +02:00 [WRN] The property 'Moderator._moderatedPostIds' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2025-07-04 22:01:39.290 +02:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-07-04 22:01:39.318 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2025-07-04 22:01:39.328 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-07-04 20:01:39.321423+00:00');
+SELECT changes();
+2025-07-04 22:01:39.370 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2025-07-04 22:01:39.374 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2025-07-04 22:01:39.375 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-07-04 22:01:39.382 +02:00 [INF] Applying migration '20250703113417_AddPost'.
+2025-07-04 22:01:39.393 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Posts" (
+    "Id" uniqueidentifier NOT NULL CONSTRAINT "PK_Posts" PRIMARY KEY,
+    "Title" nvarchar(500) NOT NULL,
+    "Content" nvarchar(256) NOT NULL,
+    "AuthorId" uniqueidentifier NOT NULL,
+    "LikedByUserIds" nvarchar(256) NOT NULL,
+    "IsMisleading" bit NOT NULL DEFAULT 0,
+    "IsFalseInformation" bit NOT NULL DEFAULT 0,
+    "Tags" nvarchar(256) NOT NULL,
+    "DateCreated" datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    "DateUpdated" datetime2 NULL,
+    "CreatedBy" uniqueidentifier NOT NULL,
+    "UpdatedBy" uniqueidentifier NULL,
+    CONSTRAINT "FK_Posts_Users_AuthorId" FOREIGN KEY ("AuthorId") REFERENCES "Users" ("Id") ON DELETE RESTRICT
+);
+2025-07-04 22:01:39.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Posts_AuthorId" ON "Posts" ("AuthorId");
+2025-07-04 22:01:39.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Posts_DateCreated" ON "Posts" ("DateCreated");
+2025-07-04 22:01:39.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Posts_Title" ON "Posts" ("Title");
+2025-07-04 22:01:39.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Posts_IsMisleading" ON "Posts" ("IsMisleading");
+2025-07-04 22:01:39.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Posts_IsFalseInformation" ON "Posts" ("IsFalseInformation");
+2025-07-04 22:01:39.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Posts_IsMisleading_IsFalseInformation" ON "Posts" ("IsMisleading", "IsFalseInformation");
+2025-07-04 22:01:39.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250703113417_AddPost', '9.0.6');
+2025-07-04 22:01:39.395 +02:00 [INF] Applying migration '20250703113921_AddModerator'.
+2025-07-04 22:01:39.405 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Moderators" (
+    "Id" uniqueidentifier NOT NULL CONSTRAINT "PK_Moderators" PRIMARY KEY,
+    "UserId" uniqueidentifier NOT NULL,
+    "IsActive" bit NOT NULL DEFAULT 1,
+    "ModeratedPostIds" nvarchar(256) NOT NULL,
+    "DateCreated" datetime2 NOT NULL DEFAULT (GETUTCDATE()),
+    "DateUpdated" datetime2 NULL,
+    "CreatedBy" uniqueidentifier NOT NULL,
+    "UpdatedBy" uniqueidentifier NULL,
+    CONSTRAINT "FK_Moderators_Users_UserId" FOREIGN KEY ("UserId") REFERENCES "Users" ("Id") ON DELETE RESTRICT
+);
+2025-07-04 22:01:39.405 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_Moderators_UserId" ON "Moderators" ("UserId");
+2025-07-04 22:01:39.405 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Moderators_IsActive" ON "Moderators" ("IsActive");
+2025-07-04 22:01:39.406 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Moderators_DateCreated" ON "Moderators" ("DateCreated");
+2025-07-04 22:01:39.406 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Moderators_IsActive_DateCreated" ON "Moderators" ("IsActive", "DateCreated");
+2025-07-04 22:01:39.406 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250703113921_AddModerator', '9.0.6');
+2025-07-04 22:01:39.412 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
