@@ -1,4 +1,5 @@
-﻿using Whispers.Chat.Core.Generated.Interfaces;
+﻿using Microsoft.AspNetCore.Identity;
+using Whispers.Chat.Core.Generated.Interfaces;
 using Whispers.Chat.Infrastructure;
 using Whispers.Chat.Infrastructure.Email;
 

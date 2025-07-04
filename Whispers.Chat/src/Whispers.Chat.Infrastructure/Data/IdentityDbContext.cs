@@ -1,9 +1,10 @@
 ﻿using Ardalis.Specification;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 
-namespace Whispers.Chat.Infrastructure.Data.Identity;
+namespace Whispers.Chat.Infrastructure.Data;
 
 public class IdentityContext : IdentityDbContext<User, Role, Guid>
 {
@@ -24,10 +25,18 @@ public class IdentityContext : IdentityDbContext<User, Role, Guid>
     modelBuilder.Entity<User>(b =>
     {
       b.ToTable("Users");
-      b.Property(u => u.LikedPostIds).HasConversion(
-              v => string.Join(',', v),
-              v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(id => Guid.Parse(id)).ToList()
-          );
+      b.Property(u => u.LikedPostIds)
+        .HasConversion(
+          v => string.Join(',', v),
+          v => v.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                .Select(id => Guid.Parse(id))
+                .ToList()
+        )
+        .Metadata.SetValueComparer(new ValueComparer<List<Guid>>(
+          (c1, c2) => c1 == null && c2 == null || c1 != null && c2 != null && c1.SequenceEqual(c2),
+          c => c == null ? 0 : c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+          c => c == null ? new List<Guid>() : c.ToList()
+        ));
     });
 
     modelBuilder.Entity<Role>(b =>
@@ -60,5 +69,4 @@ public class IdentityContext : IdentityDbContext<User, Role, Guid>
       b.ToTable("UserTokens");
     });
   }
-
 }

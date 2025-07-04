@@ -1,9 +1,7 @@
-﻿using Ardalis.SharedKernel;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates;
 using Whispers.Chat.Infrastructure.Data;
-using Whispers.Chat.Infrastructure.Data.Identity;
-using Whispers.Chat.Infrastructure.Data.Moderation;
-using Whispers.Chat.Infrastructure.Data.Posts;
 using Whispers.Chat.Web.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +30,11 @@ builder.Services.AddFastEndpoints()
                   o.ShortSchemaNames = true;
                 });
 
+// Configure ASP.NET Core Identity first (must match your IdentityContext generic types)
+builder.Services.AddIdentity<User, Role>()
+  .AddEntityFrameworkStores<IdentityContext>()
+  .AddDefaultTokenProviders();
+
 // Configure IdentityServer with both Configuration and Operational stores
 builder.Services.AddIdentityServer(
   setupAction: options =>
@@ -47,21 +50,16 @@ builder.Services.AddIdentityServer(
       sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
   .AddOperationalStore(options =>
     options.ConfigureDbContext = db => db.UseSqlite(sqliteDbConnectionString,
-      sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
+      sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
+  .AddAspNetIdentity<User>();
 
 builder.AddServiceDefaults();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(sqliteDbConnectionString));
-
-builder.Services.AddDbContext<PostsContext>(options =>
-    options.UseSqlite(sqliteDbConnectionString));
-
-builder.Services.AddDbContext<ModerationContext>(options =>
-    options.UseSqlite(sqliteDbConnectionString));
+    options.UseSqlite(sqliteDbConnectionString, o => o.MigrationsAssembly(migrationsAssembly)));
 
 builder.Services.AddDbContext<IdentityContext>(options =>
-    options.UseSqlite(sqliteDbConnectionString));
+    options.UseSqlite(sqliteDbConnectionString, o => o.MigrationsAssembly(migrationsAssembly)));
 
 var app = builder.Build();
 

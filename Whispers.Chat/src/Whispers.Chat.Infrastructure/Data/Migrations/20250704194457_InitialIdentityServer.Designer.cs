@@ -4,15 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Whispers.Chat.Infrastructure.Data;
 
 #nullable disable
 
 namespace Whispers.Chat.Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20250703095124_CreatingUserAuth")]
-    partial class CreatingUserAuth
+    [DbContext(typeof(IdentityContext))]
+    [Migration("20250704194457_InitialIdentityServer")]
+    partial class InitialIdentityServer
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,7 +118,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots.Role", b =>
+            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.Role", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,7 +145,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                     b.ToTable("Roles", (string)null);
                 });
 
-            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots.User", b =>
+            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -230,107 +229,9 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Comment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("DateUpdated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("Comment");
-                });
-
-            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Post", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("DateUpdated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsFalseInformation")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsMisleading")
-                        .HasColumnType("INTEGER");
-
-                    b.PrimitiveCollection<string>("Tags")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("Whispers.Chat.Core.Generated.ContributorAggregate.Contributor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Contributor");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots.Role", null)
+                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -339,7 +240,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots.User", null)
+                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -348,7 +249,7 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots.User", null)
+                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -357,13 +258,13 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots.Role", null)
+                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots.User", null)
+                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -372,54 +273,11 @@ namespace Whispers.Chat.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.AggregateRoots.User", null)
+                    b.HasOne("Whispers.Chat.Core.BoundedContexts.IdentityAndUsers.Aggregates.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Comment", b =>
-                {
-                    b.HasOne("Whispers.Chat.Core.BoundedContexts.Posts.Post", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Whispers.Chat.Core.Generated.ContributorAggregate.Contributor", b =>
-                {
-                    b.OwnsOne("Whispers.Chat.Core.Generated.ContributorAggregate.PhoneNumber", "PhoneNumber", b1 =>
-                        {
-                            b1.Property<int>("ContributorId")
-                                .HasColumnType("INTEGER");
-
-                            b1.Property<string>("CountryCode")
-                                .IsRequired()
-                                .HasColumnType("TEXT");
-
-                            b1.Property<string>("Extension")
-                                .HasColumnType("TEXT");
-
-                            b1.Property<string>("Number")
-                                .IsRequired()
-                                .HasColumnType("TEXT");
-
-                            b1.HasKey("ContributorId");
-
-                            b1.ToTable("Contributor");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ContributorId");
-                        });
-
-                    b.Navigation("PhoneNumber");
-                });
-
-            modelBuilder.Entity("Whispers.Chat.Core.BoundedContexts.Posts.Post", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

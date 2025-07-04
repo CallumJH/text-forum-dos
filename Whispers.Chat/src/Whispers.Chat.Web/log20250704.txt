@@ -581,3 +581,4 @@ INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
 VALUES ('20250704191801_InitialIdentityServer', '9.0.6');
 2025-07-04 21:24:08.938 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 DELETE FROM "__EFMigrationsLock";
+2025-07-04 21:44:57.569 +02:00 [WRN] The property 'User.LikedPostIds' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
